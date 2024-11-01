@@ -1,0 +1,15 @@
+
+{% if question_list %}  <!--views.index로부터 question_list 를 전달 받음-->
+    <ul>
+        {% for question in question_list %}
+            <li>
+                <a href= "{% url 'arti:index' %}">{{question.subject}}</a>  
+                <!--Question 모델의 'subject'값을 반환하고, 그걸 누르면 href에 할당된 url 로 이동시켜줌-->
+            </li>
+            {% endfor%}
+    </ul>
+{% else %}
+    <p>No articles</p>
+{% endif %}
+        
+    

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  
+        {% comment %} as_p : 보내준 값을 모두 포함하는 형식 {% endcomment %}
+        {% comment %} 여기 있는 form은 views에서 보내주는 값.  - 그건 forms.py에 있는 QuestionForm이 상속받은.  {% endcomment %}
+        <button type="submit" class="btn btn-primary">저장하기</button>
+    </form>
+</div>
+
+{% endblock %}

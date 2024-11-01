@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load article_tags %}
+{% block content %}     
+    <div class="container my-3">
+        <!--massage 표시-->
+        {% if messages %}
+        <div class = "alert alert-danger my-3" role = "alert">
+            {% for message in messages %}
+            <strong> {{message.tags}} </strong>
+            <ul>
+                <li>{{message.message}}</li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+        <!-- 질문 -->
+        <h2 class="border-bottom py-2">{{ question.subject|mark }}</h2>
+        <div class="card my-3">
+            <div class="card-body">
+                <div class="card-text">{{ question.content|mark }}</div>
+                <div class="d-flex justify-content-end">
+                    <div class="badge bg-light text-dark p-2">
+                        <div> 작성자 : {{ question.author.username }} </div>
+                        <div> {{ question.create_date }} </div>
+                        <div> {{ question.modify_date }} </div>
+                    </div>
+                </div>
+                <div class = "d-flex justify-content-end justify-content-end">
+                    <a href="javascript:void(0)" data-uri = "{% url 'arti:question_vote' question.id %}" class = "recommend btn btn-sm btn-outline-secondary"> 글좋아요 
+                    <span class = "badge rounded-pill bg-success">{{question.voter.count}}</span></a>    
+                </div>
+            </div>
+        </div >
+        
+        <div class = "my-3">
+            {% if question.author == request.user %} 
+            <!--question 모델에서의 author와, 지금 접속한 user가 동일인인지 확인-->
+            <a href="{% url 'arti:question_modify' question.id %}" class="btn btn-sm btn-outline-secondary">수정</a>   
+            <!-- question.id가 있어야 각 게시글에 대한 수정으로 요청이 가능하다.-->
+            <a href= "javascript:void(0)" data-uri= "{% url 'arti:question_delete' question.id %}" class ="btn btn-danger btn-sm btn-outline-secondary delete">삭제</a>
+            <!--javascript:void(0)  = 창이 전환되지 않도록 (않은 상태에서 기능 수행할 때 많이 쓴다. 지금 상황에서는 confirm을 쓰는 상황) -->
+            {% endif %}
+        </div>
+
+
+
+
+
+        <!-- 답변 -->
+        <h5 class="border-bottom my-3 py-2">{{ question.answer_set.count }}개의 답변이 있습니다.</h5>
+        {% for answer in question.answer_set.all %}
+        <a id="answer_{{answer.id}}"></a>
+            <div class="card my-3">
+                <div class="card-body">
+                    <div class="card-text" style="white-space: pre-line;">{{ answer.content }}</div>
+                    <div class="d-flex justify-content-end">
+                        <div class="badge bg-light text-dark p-2">
+                            <div class="mb-2"> 작성자 : {{ answer.author.username }} </div>
+                            {% if answer.modify_date %}
+                            <div>{{ answer.modify_date|date:"Y년 m월 d일 H시 i분" }} </div>
+                            {% else %}
+                            <div> {{ answer.create_date|date:"Y년 m월 d일 H시 i분" }} </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class = "d-flex justify-content-end justify-content-end">
+                        <a href="javascript:void(0)" data-uri = "{% url 'arti:answer_vote' answer.id %}" class = "recommend btn btn-sm btn-outline-secondary"> 댓글좋아요 
+                        <span class = "badge rounded-pill bg-success">{{answer.voter.count}}</span></a>    
+                    </div>
+                </div>
+            </div>
+            <!--answer는 for문에서 정의된 상태다. 그래서 endfor 밖으로 나가면 화면에 나오지 않음!-->
+            <div class = "my-3">
+                {% if answer.author == request.user %}
+                <a href="{% url 'arti:answer_modify' answer.id %}" class="btn btn-sm btn-outline-secondary"> 수정 </a>
+                <a href= "javascript:void(0)" data-uri= "{% url 'arti:answer_delete' answer.id %}" class="btn btn-danger btn-sm btn-outline-secondary delete"> 삭제 </a>
+                {% endif %}             
+            </div>
+            
+
+
+
+        {% endfor %}
+
+            <!--answer는 for문에서 정의된 상태다. 그래서 endfor 밖으로 나가면 화면에 나오지 않음!-->
+            {% comment %} <div class = "my-3">
+                {% if answer.author == request.user %}
+                <a href="#" class="btn btn-sm btn-outline-secondary"> 수정 </a>
+                <a href="#" class="btn btn-danger btn-sm btn-outline-secondary delete"> 삭제 </a>
+                {% endif %}             
+            </div> {% endcomment %}
+
+
+        <!-- 답변 등록 -->
+        <form action="{% url 'arti:answer_create' question.id %}" method="post" class="my-3">
+            {% csrf_token %}
+            {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+                {% for field in form %}
+                    {% if field.errors %}
+                        <div>
+                            <strong>{{ field.label }}</strong>
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <!-- 오류표시 End -->
+         
+        <div class="mb-3">
+            <label for="content" class="form-label">답변내용</label>
+            <textarea 
+            {% if not user.is_authenticated %} disabled {% endif %}
+            name="content" id="content" class="form-control" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+        </div>
+            <input type="submit" value="답변등록" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script type = 'text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element){
+    element.addEventListener('click', function(){
+        if (confirm("진짜 지운다")){
+            <!--confirm에서 yes 누르면 if 에 True가 들어온다. -->
+            location.href = this.dataset.uri;  
+            <!--원래 href 를, 우측값의 uri로 바꾸어라-->
+        };
+    });
+});
+</script>
+
+<script type = 'text/javascript'>
+    const recommend_elements = document.getElementsByClassName("recommend");
+    Array.from(recommend_elements).forEach(function(element){
+        element.addEventListener('click', function(){
+            if (confirm("진짜투표해?")){
+                <!--confirm에서 yes 누르면 if 에 True가 들어온다. -->
+                location.href = this.dataset.uri;  
+                <!--원래 href 를, 우측값의 uri로 바꾸어라-->
+            };
+        });
+    });
+    </script>
+{% endblock %}
