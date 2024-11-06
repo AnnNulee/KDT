@@ -1,0 +1,74 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+<script>
+    const PostDetailApp = {
+        delimiters: ['[[',']]'],
+
+        data() {
+            return {
+                post: {}, 
+                prevPost: {},
+                nextPost: {},
+                cateList: [],   //데이터가 하나가 아니라 리스트 형태로 받음
+                tagList: [],        //데이터가 하나가 아니라 리스트 형태로 받음
+
+            };
+        },
+
+        created(){
+            console.log("created()...");
+            const postId = location.pathname.split('/')[3];
+            this.fetchPostDetail(postId);
+            this.fetchCateTagList();
+
+        },
+        methods: {
+            fetchPostDetail(postId) {
+                console.log("fetchPostDetail()...", postId)
+                
+                axios.get(`/api/post/${postId}`) 
+                /// 해당 게시물에 대한 상세 정보나 데이터를 요청하기 위한 API 엔드포인트.  GET 요청을 /api/post/{postId}로 보낸다는 의미
+                .then(res => {
+                    console.log("FETCH POSTDETAIL GET RES", res);
+                    this.post = res.data.post;
+                    this.prevPost = res.data.prevPost;
+                    this.nextPost = res.data.nextPost;
+                })
+                .catch(err => {
+                    console.log("FETCH POSTLIST GET ERR.RESPONSE", err.response);
+                    alert(`${err.response.status}${err.response.statusText}`);
+                });
+            },
+            
+            fetchCateTagList() {
+                console.log("fetchCateTagList()...")
+                axios.get('/api/catetag/')   /// 슬래쉬 중요함
+                .then(res => {
+                    console.log("FETCH CATETAG LIST RES", res);
+                    this.cateList = res.data.cateList;                  
+                    this.tagList = res.data.tagList;
+                    ///도대체 이 데이ㅓ는 어디서 들어오는거야????  : 
+                    // axios.get으로 해당 url을 api에 요청한다. 
+                    // 그러면 url 타고 실행되는 views에서 'jsonresponse' 형식으로 값을 반환한다.
+                    // 해당 값은 'res'값으로 받는다. 
+                })
+                .catch(err => {
+                    console.error("Error fetching category and tag list:", err.response);
+                    
+                });
+
+            }
+
+        },
+
+
+    };
+
+Vue.createApp(PostDetailApp).mount('#page-top')  
+//Vue.createApp()로 Vue 애플리케이션을 생성하고, mount() 메서드를 통해 특정 DOM 요소에 마운트.
+//createApp(): Vue 애플리케이션을 생성하는 함수. 여기서는 PostDetailApp 객체가 애플리케이션의 구성 요소로 사용됨.
+//mount : Vue 인스턴스가 특정 DOM(html) 요소에 연결하는 과정으로, Vue 애플리케이션이 해당 요소를 제어하고, 그 안에서 데이터와 템플릿을 동적으로 렌더링할 수 있게 됩니다.
+// mount('#page-top'): 생성된 Vue 애플리케이션을 HTML 요소(id="page-top")에 연결. 이때, PostDetailApp의 템플릿과 데이터를 해당 요소 안에 렌더링.
+// page-top은 base.html 내에 있는 body의 바로 자식테그인 div에 먹임
+</script>
+

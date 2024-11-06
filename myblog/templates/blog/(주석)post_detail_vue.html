@@ -1,0 +1,41 @@
+
+
+    {% block extra-script %}
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+        <script>
+            const PostDetailApp = {
+                delimiters: ['[[',']]'], //Vue랑 Django 템플릿 충돌 방지
+                data() {
+                    return {
+                        post: {} // 포스트 데이터가 하나니까 딕셔너리 형태로 받으면 됨. 데이터 저장변수
+                    };
+                },
+                created(){ //create라는 단계에서 해당 기능 실행
+                    console.log("created()...");    // 콘솔 로그를 찍음 이 콘솔이 나오면 함수가 실행이 됐다는 뜻. 
+                    const postId = location.pathname.split('/')[3]; //postid에 따른 게시물을 보내주기 위한(주소.url) 변수 선언. >> 내 url에 찍혀있는 값중에서  /로 구분되는 주소의 3번째 인덱스에 있는것을 가져와라 
+                    this.fetchPostDetail(postId) //메소드에 postㅑId 매개변수로 제공
+
+                },
+                methods: {
+                    fetchPostDetail(postId) {   //정의된 메소드. 
+                        console.log("fatchPostDetail()...", postId) // 실행됐는지 궁금하면 이렇게 표시해줄 수있다. 
+                        axios.get(`/api/post/${postId}`)  // vue는 url로 리퀘스트를 쏠 수 없으니까, axios가 리퀘스트를 보내주는 역할. api 가져와라. 자바에서는 백틱 (``) 으로 포메팅한다. 파이선은 f{}
+                        .then(res => {
+                            console.log("FETCH POSTDETAIL GET RES", res);  //성공했을때는 이거 출력하라
+                            this.post = res.data;  //그리고 데이터를 위 data 함수에서 정의한 데이터 저장변수. post에 담아라
+                        })
+                        .catch(err => {
+                            console.log("FETCH POSTDETAIL GET ERR.RESPONSE", err.response);  //실패했을때는 이거 출력
+                            alert(`${err.response.status}${err.response.statusText}`);  //그리고 이 얼러트 띄워
+                        });
+                    },
+
+                },
+            };
+
+        Vue.createApp(PostDetailApp).mount('#page-top')
+        </script>
+    {% endblock %}
+
+

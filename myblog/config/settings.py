@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 # 모델을 안쓰면 굳이 넣을 필요가 없음
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+    'api.apps.ApiConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

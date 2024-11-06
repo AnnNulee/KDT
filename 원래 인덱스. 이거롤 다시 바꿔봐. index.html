@@ -1,22 +1,5 @@
 {% extends "base.html" %}  <!--base.html을 상속한다.-->
 {% load static %}
-
-{% block extra-style %}
-<style>
-{% comment %} post.image가 보여지는 크기를 정해주는 style class 설정 {% endcomment %}
-    .my-img-h300{
-        width : 100%;
-        height : 300px;
-        object-fit : cover;
-    }
-
-    .my-content{
-        white-space : pre-wrap;
-        
-    }
-</style>
-{% endblock%}
-
 {% block title %} index.html {%endblock%}
 
 {% comment %} 
@@ -38,33 +21,68 @@
     <!--껴넣자-->
         {% block content %}
 
- <!-- Portfolio Grid-->
- <section class="page-section bg-light" id="portfolio">
-    <div class="container">
-        <div class="text-center">
-            <h2 class="section-heading text-uppercase">Portfolio</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-        </div>
-        <div class="row">
-            <div v-for="post in postList" :key="post.id" class="col-lg-4 col-sm-6 mb-4">
-                <!-- vue에서 쏴준 postList에서 for문을 돌린다.  -->
-                <!-- Portfolio item 1-->
-                <div class="portfolio-item">
-                    <a class="portfolio-link" :href="`/blog/post/${post.id}/#post`"> <!--vue에서 postList를 쏴주었기 때문에 post.id 로드가 가능함-->
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+        <!-- Article grid-->
+        <section class="page-section bg-light" id="portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Articles</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <div class="row">
+                    
+                    <div v-for = "post in postList" : key = "post.id" class="col-lg-4 col-sm-6 mb-4">
+                    <!--Vue 심기 : v-for = "post in postList" : key = "post.id" / keyr가 뭐지? v-for이 뭐지? -->
+                        <!-- Portfolio item 1-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" href="`/blog/post/${post.id}/#post`"> 
+                            <!-- href를 "{% url 'blog:post_detail' 1 %}" 에서 "`/blog/post/${post.id}/#post`"로 변경. 이게 무슨뜻이지??-->
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="post.image" alt="..." />
+                                <!-- src="{% static 'assets/img/portfolio/1.jpg' %}" 에서 :src="post.image"로 변경-->
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Threads</div>
+                                <!-- Threads -->
+                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                                <!-- Portfolio item 1-->
+                            </div>
                         </div>
-                        <img class="img-fluid my-img-h300" :src="post.image" alt="..." />
-                    </a>
-                    <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading my-post-title">[[ post.title ]]</div><!--vue에서 postList를 쏴주었기 때문에 post.title 로드가 가능함-->
-                        <div class="portfolio-caption-subheading text-muted">[[ post.category ]]</div><!--vue에서 postList를 쏴주었기 때문에 post.category 로드가 가능함-->
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 2-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'assets/img/portfolio/2.jpg' %}" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Explore</div>
+                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                        <!-- Portfolio item 4-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'assets/img/portfolio/4.jpg' %}" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Lines</div>
+                                <div class="portfolio-caption-subheading text-muted">Branding</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
         <!-- Team-->
         <section class="page-section bg-light" id="team">
             <div class="container">
@@ -413,43 +431,30 @@
             </div>
         </footer>
         {% endblock %}
-        
-        {% comment %} {% block extra-script %}
-            <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-            <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
-            <script>
-                const PostListApp = {
-                    delimiters: ['[[',']]'], //Vue랑 Django 템플릿 충돌 방지
-                    data() {
-                        return {
-                            post: {} // 포스트 데이터가 하나니까 딕셔너리 형태로 받으면 됨. 데이터 저장변수
-                        };
-                    },
-                    created(){ //create라는 단계에서 해당 기능 실행
-                        console.log("created()...");    // 콘솔 로그를 찍음 이 콘솔이 나오면 함수가 실행이 됐다는 뜻. 
-                        this.fetchPostList()   //이 함수를 실행하라. 이 메소드는 아래에 정의되어있다. 
-                    },
-                    methods: {
-                        fetchPostList() {   //정의된 메소드. 
-                            axios.get('/api/post/list')  //api 가져와라. 
-                            .then(res => {
-                                console.log("FETCH POSTLIST GET RES", res);  //성공했을때는 이거 출력하라
-                                this.postList = res.data;  //그리고 데이터를 여기 담아라
-                            })
-                            .catch(err => {
-                                console.log("FETCH POSTLIST GET ERR.RESPONSE", err.response);  //실패했을때는 이거 출력
-                                alert(`${err.response.status}${err.response.statusText}`);  //그리고 이 얼러트 띄워
-                            });
-                        },
 
-                    },
-                };
+        {% block extra-script %}
+        <script src="<https://unpkg.com/vue@3/dist/vue.global.js>"></script>
+        <script src="<https://unpkg.com/axios@1.6.7/dist/axios.min.js>"></script>
 
-            Vue.createApp(PostListApp).mount('#page-top')
-            </script>
-    {% endblock %} {% endcomment %}
+        <script>
+            const PoisListApp = {
+                delimiters : ['[[',']]'], //vue랑 django템플릿 충돌 방지
+                data(){
+                    return {
+                        postList:[] //  쟝고에게 받은 Post 목록 데이터를 담아줄 변수. 내부 하나하나 각각은 json형태로 들어옴. 
+                    }
 
-    {% block extra-script %}
-    <!--vue를 여기써도 되지만 유지보수면에서 더 낫도록 templates - include 폴더의 post_list_vue.html 로 옮김-->
-        {% include 'include/post_list_vue.html' %}
-    {% endblock %}
+                },
+                created(){
+                    
+                },
+                methods : {
+
+                }
+
+            };
+
+
+        </script>
+        {% endblock %}
+

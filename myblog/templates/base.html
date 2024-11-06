@@ -37,8 +37,14 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+<!--head에 styleblock을 생성하여 다른 자식html에서 style-block을 사용했을 때 헤더에 적용되게 만든다.-->
+        {% block extra-style%}{% endblock%} 
+        
     </head>
-    <body id="page-top">
+    <body>
+        <!-- vue는 body테그 안에 있는 id는 읽지 않는다. 그래서 원래 body의 id였던것을 빼내어 바로 아래 새로운 div를 만들어주고 id를 적용시킴. 이 전체가 vue의 컴포넌트가 된다.-->
+        <div id = "page-top"> 
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
@@ -92,6 +98,6 @@
     
         {% block extra-script %}
         {% endblock %}
-
+    </div>
     </body>
 </html>

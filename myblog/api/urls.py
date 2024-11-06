@@ -1,0 +1,14 @@
+from django.urls import path
+from . import views
+
+
+
+app_name = 'api'
+
+urlpatterns = [
+    path('post/list/', views.ApiPostLV.as_view(), name='post_list'),
+    path('post/<int:pk>/', views.ApiPostDV.as_view(), name='post_detail'),
+    path('catetag/', views.ApiCateTag.as_view(), name='catetag_list'),
+    
+]
+

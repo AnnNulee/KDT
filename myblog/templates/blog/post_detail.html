@@ -1,32 +1,30 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extra-style %}
+<style>
+    {% comment %} post.image가 보여지는 크기를 정해주는 style class 설정 {% endcomment %}
+    .my-img-h300{
+        width : 100%;
+        height : 300px;
+        object-fit : cover;
+    }
 
-{% comment %} 
-    부트스트랩에서 테마 파일을 스태틱 폴더에 넣고 
-    index.html만 따로 떼어 templates에 넣었으면 
-    이제 경로를 재 설정해줘야 한다
-    
-    모든 소스의 경로를 끌어오는 곳은 index.html이기때문에 이곳의 소스를 바꾼다.
-    
-    src(소스 경로)는 static내의 폴더로 바뀌었으므로 
-    [ src="(.*?)" ]에서 => [ src="{% static '$1' %}" ]
-    로 모두 변경해주고 
+    .my-content{
+        white-space : pre-wrap;
+        
+    }
 
-    나머지 css나 favicon도 마찬가지로 static에 있음을 명시해준다.
-    
-    
-    {% endcomment %}
-
-
-
-
-
-
+    .my-link:hover {
+        cursor : pointer;
+        font-style: italic;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-
-    <!-- Page content-->
-    <section class = "page-section" id "post">
-        <div class="container mt-5" >
+        <!-- Page content-->
+        <section class="page-section" id="post">
+        <div class="container mt-5">
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Post content-->
@@ -34,35 +32,28 @@
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
+                            <h1 class="fw-bolder mb-1">[[ post.title ]]</h1>
                             <hr>
                             <p>
-                            <span>2024-11-05 &emsp; </span>
-                            <i class = "fas fa-copyright"></i> &nbsp;
-                            <span>IT &emsp; </span>
-                            <i class = "fas fa-tag"></i> &nbsp;
-                            <span>Django Python &emsp; </span>
-                            <i class = "fas fa-heart"></i> &nbsp;
-                            <span> 5 &emsp; </span>
+                            <span>[[post.update_date]] &emsp;</span>
+                            <i class="fas fa-copyright"></i> &nbsp;
+                            <span>[[post.category]] &emsp;</span>
+                            <i class="fas fa-tag"></i> &nbsp;   
+                            <span v-for = "(tag, index) in post.tags" :key="index">
+                                <span v-if = "index !==0 ">,</span> <!--인덱스가 0이 아닌경우 콤마를 넣어라-->
+                                <span>[[tag]]</span>                                
+                                </span>&emsp;  <!--태그는 여러개라 vue for문을 넣어줘야한다. -->
+                            <i class="fas fa-heart"></i> &nbsp; 
+                            <span> 5 &emsp;</span>
                             </p>
-                            <hr>
-
-                            <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div>
-                            <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                            <hr>                           
                         </header>
                         <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+                        <figure class="mb-4"><img class="img-fluid rounded my-img-h300" :src="post.image" alt="..." /></figure> 
+                        <!-- ":"데이터 바인딩할 때 쓴다. src에원래는 http 넣어야하는데, 지금은 vue에서 데이터를 끼워넣는(바인딩)한다. -->
                         <!-- Post content-->
                         <section class="mb-5">
-                            <p class="fs-5 mb-4">Science is an enterprise that should be cherished as an activity of the free human mind. Because it transforms who we are, how we live, and it gives us an understanding of our place in the universe.</p>
-                            <p class="fs-5 mb-4">The universe is large and old, and the ingredients for life as we know it are everywhere, so there's no reason to think that Earth would be unique in that regard. Whether of not the life became intelligent is a different question, and we'll see if we find that.</p>
-                            <p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
-                            <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
-                            <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-                            <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
+                            <p class="fs-5 mb-4 my-content">[[ post.content ]]</p>
                         </section>
                     </article>
                     <!-- Comments section-->
@@ -76,15 +67,15 @@
                                     <!-- Parent comment-->
                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                     <div class="ms-3">
-                                        <div class="fw-bold">2024-11-05 11:08</div>
-                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.                            
+                                        <div class="fw-bold">2024-11-05-11:08:56</div>
+                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
                                     </div>
                                 </div>
                                 <!-- Single comment-->
                                 <div class="d-flex">
                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                     <div class="ms-3">
-                                        <div class="fw-bold">2024-11-05 10:26</div>
+                                        <div class="fw-bold">2024-11-05-11:00:56</div>
                                         When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
                                     </div>
                                 </div>
@@ -94,52 +85,43 @@
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
-                    <!-- Preview Post-->
                     <div class="card mb-4">
-                        <div class="card-header">Preview Post</div>
-                        <div class="card-body">이전 게시물 타이틀</div>
+                        <div class="card-header">Prev Post</div>
+                        <div class="card-body my-link" @click = "fetchPostDetail(prevPost.id)">[[ prevPost.title ]]</div>
+                                                    <!--vue에서 정의된 함수 사용 가능.-->
                     </div>
-                    <!-- Next Post-->
                     <div class="card mb-4">
                         <div class="card-header">Next Post</div>
-                        <div class="card-body">이후 게시물 타이틀</div>
+                        <div class="card-body my-link" @click = "fetchPostDetail(nextPost.id)">[[ nextPost.title ]]</div>
                     </div>
                     <!-- Categories widget-->
                     <div class="card mb-4">
                         <div class="card-header">Categories</div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Web Design</a></li>
-                                        <li><a href="#!">HTML</a></li>
-                                        <li><a href="#!">Freebies</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">ㄴ
-                                        <li><a href="#!">JavaScript</a></li>
-                                        <li><a href="#!">CSS</a></li>
-                                        <li><a href="#!">Tutorials</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <span v-for="(category, index) in cateList" :key = "category.id">
+                                <span v-if = "index !==0"> &emsp; </span>
+                                <span class="text-success my-link">[[category]]</span>
+                            </span>
                         </div>
                     </div>
-                    <!-- Tags widget-->
+                    <!-- Side widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Tags</div>
+                        <div class="card-header">tags</div>
                         <div class="card-body">
-                            <div class="row">
-
-                            </div>
+                            <span v-for = "(tag, index) in tagList" :key = "tag.id">
+                                <span v-if = "index !==0"> &emsp; </span>
+                                <span class = "text-succeess my-link">[[tag]]</span>
+                            </span>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
-    </section>    
-
-
+    </section>
 {% endblock %}
 
 
+{% block extra-script %}
+    <!--vue를 여기써도 되지만 유지보수면에서 더 낫도록 templates - include 폴더의 post_detail_vue.html 로 옮김-->
+    {% include 'include/post_detail_vue.html' %}
+{% endblock %}
