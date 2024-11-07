@@ -18,6 +18,12 @@
         cursor : pointer;
         font-style: italic;
     }
+
+    .my-like:hover{
+        cursor : pointer;
+        color : red;
+        
+    }
 </style>
 {% endblock %}
 
@@ -37,14 +43,16 @@
                             <p>
                             <span>[[post.update_date]] &emsp;</span>
                             <i class="fas fa-copyright"></i> &nbsp;
-                            <span>[[post.category]] &emsp;</span>
+                            <span class = "my-link" @click="serverPage(post.category, '')">[[post.category]] &emsp;</span>
                             <i class="fas fa-tag"></i> &nbsp;   
                             <span v-for = "(tag, index) in post.tags" :key="index">
                                 <span v-if = "index !==0 ">,</span> <!--인덱스가 0이 아닌경우 콤마를 넣어라-->
-                                <span>[[tag]]</span>                                
+                                <span class = "my-link" @click = "serverPage('', tag)">[[tag]]</span>                                
                                 </span>&emsp;  <!--태그는 여러개라 vue for문을 넣어줘야한다. -->
-                            <i class="fas fa-heart"></i> &nbsp; 
-                            <span> 5 &emsp;</span>
+                            <span class = "my-like" @click="likeCount(post.id)">
+                                <i class="fas fa-heart" ></i> &nbsp; 
+                            </span>
+                            <span > [[post.like]] &emsp;</span>
                             </p>
                             <hr>                           
                         </header>
@@ -61,22 +69,23 @@
                         <div class="card bg-light">
                             <div class="card-body">
                                 <!-- Comment form-->
-                                <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
-                                <!-- Comment with nested comments-->
-                                <div class="d-flex mb-4">
-                                    <!-- Parent comment-->
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">2024-11-05-11:08:56</div>
-                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                                <form class="mb-4" id="comment-form" > 
+                                    <!--vue에서 axios.post로 넘길 때 잘 찾으라고 id 부여.-->
+                                    <textarea name = 'content' class="form-control" rows="3" placeholder="Join the discussion and leave a comment!">                                
+                                    </textarea>
+                                    <div class = "d-flex justify-content-end mt-1">
+                                        <div class="btn btn-primary btn-sm" @click = "submitForm">SUBMIT</div>
                                     </div>
-                                </div>
-                                <!-- Single comment-->
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                </form>
+                                <!-- Comment List-->
+                                <div v-for="comment in commentList" :key="comment.id" class="d-flex mb-4">
+                                <!--vue문법에서는 for문 돌릴때 중복되지 않는 값을 줘야한다. 그럼 여기서 comment.id를 중복되지않는, 구분값(key)로 주겠다(바인딩한다)-->
+                                    <div class="flex-shrink-0 my-comment-icon">
+                                        <i class ="fas fa-user-circle"></i>                                 
+                                    </div>
                                     <div class="ms-3">
-                                        <div class="fw-bold">2024-11-05-11:00:56</div>
-                                        When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+                                        <div class="fw-bold">[[ comment.update_date ]]</div>
+                                        <div class="my-content">[[ comment.content ]]</div>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +109,8 @@
                         <div class="card-body">
                             <span v-for="(category, index) in cateList" :key = "category.id">
                                 <span v-if = "index !==0"> &emsp; </span>
-                                <span class="text-success my-link">[[category]]</span>
+                                <span class="text-success my-link" @click="serverPage(category, '')">[[category]]</span>    
+                                                     <!--해당 스팬 click시 vue함수 실행되고, 두 매개변수중 하나인 카테고리 적용, 태그란은 빈 값 적용-->
                             </span>
                         </div>
                     </div>
@@ -110,7 +120,7 @@
                         <div class="card-body">
                             <span v-for = "(tag, index) in tagList" :key = "tag.id">
                                 <span v-if = "index !==0"> &emsp; </span>
-                                <span class = "text-succeess my-link">[[tag]]</span>
+                                <span class = "text-succeess my-link" @click = "serverPage('', tag)">[[tag]]</span>
                             </span>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-
+#views에서 데이터를 가져올 때 사용하는 함수를 모아서 관리하기 위한 모델 파일.
 
 def obj_to_post(obj, flag=True):  #어떤 obj를 하나 받으면, 그것에 있는 모든것을 적합한 형태 (dict)로 만들어 
     """
@@ -58,3 +58,19 @@ def prev_next_post(obj) :
         nextDict = {}
         
     return prevDict, nextDict
+
+
+
+
+def obj_to_comment(obj):
+    comment = dict(vars(obj)) #dict형식으로 바꿔줌
+    
+    #날짜 형식 맞춰주기
+    if obj.update_date:
+        comment['update_date'] = obj.update_date.strftime("%Y-%m-%d %H:%M:%S")
+    else :
+        comment['update_date'] = '9999-12-31 00:00:00'
+    
+    del comment['_state'], comment['post_id'], comment['create_date']   ## 불필요한 정보 삭제해서 좀 간소화해준다 
+    
+    return comment

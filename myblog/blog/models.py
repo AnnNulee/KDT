@@ -52,7 +52,7 @@ class Tag(models.Model):
  
 # 댓글
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE) #(FK, NN,CS)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE ) #(FK, NN,CS)
                             # 위에 이미 정의된 모델을 참조할때는 문자열 말고 바로 참조 가능 
     
     content = models.TextField('CONTENT') #(Text, NN)
