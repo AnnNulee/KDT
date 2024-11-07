@@ -7,12 +7,14 @@
     // 장고는 기본적으로 csrf를 제공하는데 이렇게 
     // 서버가 csrf를 결정하면, client도 해당 csrf를 받아줄 때를 위해 정해준다.  같이 약속된 이름(변수)로 왔다갔다 한다. 
 
-    // 근데 
+    // 근데 나는 안됨. 그래서 수동으로 연결해줬다......아쉬움
 
 
     const PostDetailApp = {
         delimiters: ['[[',']]'],
 
+        //axios로 api 받아서 then을 통해 컴포넌트에 적용할 때 넣어줄 data()는 컴포넌트의 템플릿에서에서 사용할 변수들을 반환하고 정의함.
+        //해당 변수들은 반응형으로 동작. 이들은 컴포넌트가 렌더링될 때 Vue가 추적하여 화면에 동적으로 반영
         data() {
             return {
                 post: {}, 
@@ -25,15 +27,20 @@
             };
         },
 
+        // vue가 실행되면 api를 요청하고 데이터를 받아오는 함수들이 실행된다.
+        // postId 변수를 정의 (url path의 3번째 슬러쉬 후에 있는 주소 끌어옴)
         created(){
             console.log("created()...");
-            const postId = location.pathname.split('/')[3];
+            const postId = location.pathname.split('/')[3]; /// postId :  url에서 따온다. 
             this.fetchPostDetail(postId);
             this.fetchCateTagList();
             
 
         },
         methods: {
+
+            // 게시글 페이지의 url로 api를 요청하여,
+            // (해당 url - views에서 정의한 함수가 준비해준) 데이터를 받은 후 fetch한다.  
             fetchPostDetail(postId) {
                 console.log("fetchPostDetail()...", postId)
                 
@@ -52,6 +59,7 @@
                 });
             },
             
+
             fetchCateTagList() {
                 console.log("fetchCateTagList()...")
                 axios.get('/api/catetag/')   /// 슬래쉬 중요함
@@ -78,12 +86,20 @@
                     //쿼리는 url정의 안함.조회할 때 get요청을 주는데, 필요한 값을 요청하는데 그 조건에 대해 알려줄 때 쿼리를 짜서 보내주는 것.
             // 필요한 값만 쿼리에 적어서 장고에 요청.카테고리를 눌렀을때와 태그 눌렀을때 두가지 상황에서 쿼리를 만들게 된다
             // 매개변수가 잘못들어갈 경우를 대비하여 에러처리를 해줘야함. (범위 외의 값이거나 두개 동시에 들어왔을때 등)
+
+
+            // html 페이지에서 category를 누르면,  @click에 연동된 해당 함수가 발동하고 category 나 tag가 변수로 넘어온다. 
             serverPage(category='', tag = '') {
                 console.log("serverPage()...", category, tag);
 
-                if(category && tag) alert(`serverPage() both args Error ${category} and ${tag}`);
                 // && 앤드 연산자. 두개 동시에 있을 때.
-                else if (category) location.href = `/?category=${category}#portfolio`;  // 쿼리문 시작할때 항상 물음표(?)가 있어야 한다. category= 아까 지정한 변수로 지정하겠다. + html의 id 중 하나인 #로 화면 옮겨주겠다. 
+                if(category && tag) alert(`serverPage() both args Error ${category} and ${tag}`);
+                
+                // 둘 중 하나만 들어왔을때는, url에 더하여 쿼리를 보내는 하이퍼ref가 적용된다. 
+                // 쿼리문 시작할때 항상 물음표(?)가 있어야 한다. category= 아까 지정한 변수로 지정하겠다. + html의 id 중 하나인 #로 화면 옮겨주겠다. 
+
+                                                                        ////////////////////////////카테고리나 테그가 어떻게 index로 들어가고 해당하는 포스트 리스트를 쓸어오는지 아직 이해못함 //////////
+                else if (category) location.href = `/?category=${category}#portfolio`;  
                 else if (tag) location.href = `/?tag=${tag}#portfolio`;
                 else location.href = '/#portfolio'
             },
