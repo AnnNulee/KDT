@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    
+    <!-- 함수 정의: h1 태그로 텍스트를 감싸는 HTML 문자열을 생성 -->
+    <script>
+        const h1 = (text) => `<h1>${text}</h1>`;
+    </script>
+
+    <!-- body가 아직 로드되지 않았기 때문에 실행되지 않음 -->
+    <script>
+        document.body.innerHTML += h1('1번째 script 태그');
+    </script>
+    <!-- head에는 뭐가 들어가더라도 내용에 나오지 않음.-->
+
+</head>
+<body>
+    <!-- script로 감싸 객체 생성, 함수 적용 등등 가능 -->
+
+    <!-- body 내에 첫 번째 h1 태그를 추가 -->
+    <script>
+        document.body.innerHTML += h1('2번째 script 태그'); 
+    </script>
+
+    <!-- 정적인 HTML 내용 -->
+    <h1>1번째 h1 태그</h1>
+
+    <!-- body의 기존 내용을 덮어씌우고 새 h1 태그를 추가 -->
+    <script>
+        document.body.innerHTML += h1('3번째 script 태그');
+    </script>
+
+    <!-- 정적인 HTML 내용 -->
+    <h1>2번째 h2 태그</h1>
+</body>
+</html>

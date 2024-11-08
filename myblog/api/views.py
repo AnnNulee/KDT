@@ -38,15 +38,10 @@ class ApiPostLV(BaseListView):
 
 
 
-# 포스트 하나만 받을 때.
+# 
 
-# class ApiPostDV(BaseDetailView):
-#     model = Post
-    
-#     def render_to_response(self, context, **response_kwargs):
-#         obj = context['object']  ##괄호 아니고 대괄호. 리스트 형태로 들어와준다. 
-#         post = obj_to_post(obj)
-#         return JsonResponse(data=post, safe=True, status=200) #dict일때는 safe를 True로
+
+
     
     
 class ApiPostDV(BaseDetailView):
@@ -56,6 +51,9 @@ class ApiPostDV(BaseDetailView):
         obj = context['object']  ##괄호 아니고 대괄호. 리스트 형태로 들어와준다.  
         ## BaseDetailView에서 자동으로 context 딕셔너리를 생성(내가 만드는거 아님)하고, 이 안에 object라는 키를 포함하여 해당 모델의 인스턴스를 담는다.
         post = obj_to_post(obj) #utils # response 형식으로 적합한 딕셔너리 형태로 만든다. 
+        # return JsonResponse(data=post, safe=True, status=200)     
+        # 포스트 하나만 받을 때는 return이 여기 있다.
+        
         prevPost, nextPost = prev_next_post(obj) #utils # 데이터를 기준으로 앞의, 뒤의 모델 데이터를 id와 타이틀만 가져오겠다.
         
         #comment는 여러개니까 여러개 뽑아주는 반복문으로 리스트 내부에 세팅

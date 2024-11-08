@@ -98,7 +98,8 @@
                 // 둘 중 하나만 들어왔을때는, url에 더하여 쿼리를 보내는 하이퍼ref가 적용된다. 
                 // 쿼리문 시작할때 항상 물음표(?)가 있어야 한다. category= 아까 지정한 변수로 지정하겠다. + html의 id 중 하나인 #로 화면 옮겨주겠다. 
 
-                                                                        ////////////////////////////카테고리나 테그가 어떻게 index로 들어가고 해당하는 포스트 리스트를 쓸어오는지 아직 이해못함 //////////
+                //카테고리나 테그가 어떻게 index로 들어가고 해당하는 포스트 리스트를 쓸어오는지? 
+                // index views인 ApiPostLV 함수 내에서 해결.
                 else if (category) location.href = `/?category=${category}#portfolio`;  
                 else if (tag) location.href = `/?tag=${tag}#portfolio`;
                 else location.href = '/#portfolio'

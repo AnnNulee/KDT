@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>제목</h1>
+    <h3 id="clickCount">클릭 횟수 : 0</h3>
+
+    <script>
+        let count = 0; // 클릭 카운트를 저장할 변수
+
+        const h1 = document.querySelector('h1');
+
+        h1.addEventListener('click', function(){
+            count = count + 1;
+            // document.body.innerHTML('clickCount').textContent = `클릭횟수 : ${count}`
+            // 오답노트)) body.innerHTML 아니고~ getElimentById 쓰라고~  
+            document.getElementById('clickCount').textContent = `클릭횟수 : ${count}`;
+        });
+
+    </script>
+</body>
+
+</html>
