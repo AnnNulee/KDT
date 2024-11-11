@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>🎈</h1>
+    <script>
+        const star = document.querySelector('h1'); // 풍선 잡아주기
+        star.style.position= 'absolute';     // 풍선 위치값을 절대 위치로 설정 
+        let [x, y] = [0, 0]; // 초기 위치
+        const block = 20;  // 이동시 이동 간격 (px) 20씩 이동
+
+        const print = () => {
+            star.style.left = `${x * block}px`;
+            star.style.top = `${y * block}px`;
+        };
+        print();
+
+        // 키 기능 구현. 오른쪽 1회 누르면 오른쪽으로 20px 움직임
+
+        const [left, up, right, down] = [37, 38, 39, 40]; // 키보드의 모든 키에는 다 키 값이 있다. 
+        document.body.addEventListener('keydown', (event) => {  // 매개변수 event를 받으면, 해당 이벤트가 '어떤' 이벤트인지 구분이 가능함. click같은 경우는 하나니까 필요 없는거지. 
+                // body 전체를 잡아야한다. 키보드 입력값을 기다리는것은 h1등 요소 하나뿐이 아니라, 해당 페이지 전체에서 대기 중.
+            switch (event.keyCode) {   // swich 함수는 조건은 하나. keycode가 들어오는 조건. else문의 경우는 keycode를 다 정해줘야함
+                        //오답) keyCode : 이벤트에 들어있는 속성. 대문자 안지켜주면 실행안된다.
+                case left : x -= 1; break;
+                case up : y -= 1; break;
+                case right : x += 1; break;
+                case down : y += 1; break;
+            }
+            print();
+        });
+
+    </script>
+
+    
+</body>
+</html>

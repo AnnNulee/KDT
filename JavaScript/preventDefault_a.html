@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href='<http://www.naver.com>'>이동</a>
+
+    <script>
+        const link = document.querySelector('a');
+
+        link.addEventListener('click', (event) => { 
+             // prevent를 쓸거면, click event를 잡아주기 위해 매개변수를 넣어주어야 한다.
+            alert("이동불가");
+            event.preventDefault();
+        });      
+    </script>
+</body>
+</html>

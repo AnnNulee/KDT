@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inchInput"> inch     <!--값 입력-->
+    <button id="convertButton">계산</button>    <!--이벤트-->
+    <p id="result"></p>                         <!--값 출력-->
+
+    <script>
+				// 변환 공식 : inch * 2.54 => cm
+        
+        const input = document.getElementById('inchInput'); 
+        const button = document.getElementById('convertButton');
+        const result = document.getElementById('result');
+
+        button.addEventListener('click', () => {   // 애로우 함수. 매개변수가 없어서 괄호 안이 빈다. 
+                    /// 오답)리스너 대문자로 시작이야!!            
+            const inchValue = input.value; /// 오답) 인풋값(value) 먼저 가져와야해!!!
+            const cmValue = inchValue * 2.54;  
+            result.textContent = `${cmValue}cm`;
+        })
+    </script>
+</body>
+</html>

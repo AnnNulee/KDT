@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--input된 글자의 수를 세서 알려주기-->
+    <h3> 글자 수 : 0</h3>
+    <input type="text" name = "title" id = "title">
+
+    <script>
+        //eventlistening을 할 요소 찾기
+        const h3 = document.querySelector('h3');   // 변화시킬 요소
+        const input = document.querySelector('input');  //이벤트를 관찰할요소. 
+
+        input.addEventListener('keyup', function(event){
+            const length = input.value.length;  //변수 정의 : 인풋의 글자의 길이 세기. 
+
+            h3.textContent =   `글자수 : ${length}`;  // 그 글자의 길이를 h3에 적용시키기
+        });
+    </script>
+</body>
+</html>

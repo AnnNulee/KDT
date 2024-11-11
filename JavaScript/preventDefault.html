@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src = "ships.png">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+                                // html에있는 Dom들이 실행이 다 끝난 후에 실행되어라.  화면 구성이 끝난 후에는 막아져 있어야 한다. 이벤트 리스너가 시작되는 시점은 돔 구성이 끝난 후.                                
+            const imgs = document.querySelectorAll('img'); //All 안찍으면 안된다. 
+                                // 모든 돔이 구성되면 이미지 테그를 모두 선택하게 됨
+            imgs.forEach((img) => {
+                img.addEventListener('contextmenu', (event) => {  
+                                    // '오른쪽 버튼을 클릭하면,'' 
+                    event.preventDefault();
+                    // 막아라
+                });
+            });
+        });
+
+        
+
+
+    </script>
+</body>
+</html>
