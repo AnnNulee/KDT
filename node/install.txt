@@ -17,3 +17,6 @@ npm install -g vue
 npm install -g @vue/cli
 :vue로 프로젝트를 생성하는데 필요한 여러가지 세팅. JS 말고 timescript를 같이 써도 됨. vue를 쓸 때, vue가 다른 패키지를 끌어와 쓴다. 그런 것들도 설치가 해주어야 함. 이런것들을 자동 세팅해주는게 vue/cli
 
+
+
+4. npm run serve : 폴더 들어가서 서버 돌리기

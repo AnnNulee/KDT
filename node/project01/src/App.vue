@@ -2,7 +2,21 @@
   <nav>
     <router-link to="/">Home</router-link> | 
     <router-link to="/about">About</router-link> |
-    <router-link to="/test">TEST</router-link>
+    <router-link to="/list">Binding</router-link> |
+      <br/>
+      <router-link to="/string">String</router-link> |
+      <router-link to="/attribute">Attribute</router-link> |
+      <router-link to="/html">Html</router-link> |
+      <router-link to="/input">Input</router-link> |
+      <router-link to="/class">Class</router-link> |
+      <router-link to="/list">List</router-link> |
+      <router-link to="/csr">Checkbox + Select + Radio</router-link> |
+      <router-link to="/calB">Calulator w/ Button</router-link> |
+      <router-link to="/calR">Calulator w/ Radio</router-link> |
+      <router-link to="/calCB">Calulator w/ checkbox</router-link> |
+
+
+
     <!--이전) main.js 2)) App.vue에는 라우팅 링크가 되어있다. router 내부 index에서 정의된 '/'와 '/about' 를 참조-->
   </nav>
   <router-view/>   <!-- 해당 라우터에 맞는 view들을 이곳에 넣겠다. vue문법에 내장 있는 태그들. 예약어임 -->
