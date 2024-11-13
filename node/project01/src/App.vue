@@ -4,6 +4,9 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/list">Binding</router-link> |
       <br/>
+      <br />
+      <br/>
+      <br />
       <router-link to="/string">String</router-link> |
       <router-link to="/attribute">Attribute</router-link> |
       <router-link to="/html">Html</router-link> |
@@ -11,9 +14,24 @@
       <router-link to="/class">Class</router-link> |
       <router-link to="/list">List</router-link> |
       <router-link to="/csr">Checkbox + Select + Radio</router-link> |
+      <br />
+      <br />
       <router-link to="/calB">Calulator w/ Button</router-link> |
       <router-link to="/calR">Calulator w/ Radio</router-link> |
       <router-link to="/calCB">Calulator w/ checkbox</router-link> |
+      <br />
+      <br />
+      <router-link to="/click">Click</router-link> |
+      <router-link to="/change">Change</router-link> |
+      <router-link to="/changeP">Change-practice</router-link> |
+      <router-link to="/key">Key</router-link> |
+      <br />
+      <br />
+      <router-link to="/render">Render</router-link> |
+      <router-link to="/renderShow">RenderShow</router-link> |
+      <router-link to="/computed">Computed</router-link> |
+      <router-link to="/watch">Watch</router-link> |
+
 
 
 

@@ -24,6 +24,7 @@ const routes = [
                                                        // webpackPrefetch:true 하면 home이 불러와질때 about도 같이 불러와서 대기시킴. 
   },
 
+                  //  webpackChunkName: 에 같은 이름을 주면, 그 하나의 이름의 js 파일로 청크를 받아온다. 이름을 나누는대로 파일 생성됨 
   {
     path : '/test',
     name : 'TEST',
@@ -40,49 +41,95 @@ const routes = [
     path : '/html',
     name : 'html',
     component : () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/DataBinding/HtmlView.vue')
-  },
+  },  
 
   {
     path : '/attribute',
     name : 'attribute',
-    component : () => import(/* webpackChunkName: "attribute", webpackPrefetch:true */ '../views/DataBinding/AttributeView.vue')
+    component : () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/DataBinding/AttributeView.vue')
   },
   {
     path : '/class',
     name : 'class',
-    component : () => import(/* webpackChunkName: "class", webpackPrefetch:true */ '../views/DataBinding/ClassView.vue')
+    component : () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/DataBinding/ClassView.vue')
   },
 
   {
     path : '/input',
     name : 'input',
-    component : () => import(/* webpackChunkName: "input", webpackPrefetch:true */ '../views/DataBinding/InputView.vue')
+    component : () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/DataBinding/InputView.vue')
   },
   {
     path : '/list',
     name : 'list',
-    component : () => import(/* webpackChunkName: "list", webpackPrefetch:true */ '../views/DataBinding/ListView.vue')
+    component : () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/DataBinding/ListView.vue')
   },
   {
     path : '/csr',
     name : 'csr',
-    component : () => import(/* webpackChunkName: "csr", webpackPrefetch:true */ '../views/DataBinding/CheckboxSelectRadioView.vue')
+    component : () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/DataBinding/CheckboxSelectRadioView.vue')
   },
   {
     path : '/calB',
     name : 'calB',
-    component : () => import(/* webpackChunkName: "calB", webpackPrefetch:true */ '../views/DataBinding/Calculator(Button)View.vue')
+    component : () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/DataBinding/Calculator(Button)View.vue')
   },
   {
     path : '/calR',
     name : 'calR',
-    component : () => import(/* webpackChunkName: "calR", webpackPrefetch:true */ '../views/DataBinding/Calculator(Radio)View.vue')
+    component : () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/DataBinding/Calculator(Radio)View.vue')
   },
   {
     path : '/calCB',
     name : 'calCB',
-    component : () => import(/* webpackChunkName: "calCB", webpackPrefetch:true */ '../views/DataBinding/Calculator(checkbox)View.vue')
+    component : () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/DataBinding/Calculator(checkbox)View.vue')
   },
+  {
+    path : '/calCB',
+    name : 'calCB',
+    component : () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/DataBinding/Calculator(checkbox)View.vue')
+  },
+  {
+    path : '/click',
+    name : 'click',
+    component : () => import(/* webpackChunkName: "event", webpackPrefetch:true */ '../views/Event/ClickView.vue')
+  },
+  {
+    path : '/change',
+    name : 'change',
+    component : () => import(/* webpackChunkName: "event", webpackPrefetch:true */ '../views/Event/ChangeView.vue')
+  },
+  {
+    path : '/changeP',
+    name : 'changeP',
+    component : () => import(/* webpackChunkName: "event", webpackPrefetch:true */ '../views/Event/ChangeView(prac).vue')
+  },
+  {
+    path : '/key',
+    name : 'key',
+    component : () => import(/* webpackChunkName: "event", webpackPrefetch:true */ '../views/Event/KeyView.vue')
+  },
+  {
+    path : '/render',
+    name : 'render',
+    component : () => import(/* webpackChunkName: "extra", webpackPrefetch:true */ '../views/Extra/RenderView.vue')
+  },
+  {
+    path : '/renderShow',
+    name : 'renderShow',
+    component : () => import(/* webpackChunkName: "extra", webpackPrefetch:true */ '../views/Extra/RenderShowView.vue')
+  },
+  {
+    path : '/computed',
+    name : 'computed',
+    component : () => import(/* webpackChunkName: "extra", webpackPrefetch:true */ '../views/Extra/ComputedView.vue')
+  },
+  {
+    path : '/watch',
+    name : 'watch',
+    component : () => import(/* webpackChunkName: "extra", webpackPrefetch:true */ '../views/Extra/WatchView.vue')
+  },
+
 
 ]
 
