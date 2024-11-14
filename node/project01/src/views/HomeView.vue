@@ -1,8 +1,9 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/> 
-    <!--script에서 땡겨와서 export해준 HelloWorld 컴포넌트를 이곳에서 보여준다고!!!!!!-->
+    <HelloWorld msg="Welcome to Your Vue.js App"/>  
+    <p>여기서 선언한 msg 변수를 HelloWorld 컴포넌츠에 넘겨준다.</p>
+    <!--script에서 땡겨와서 export해준 HelloWorld 컴포넌트를 이곳에서 보여준다.-->
   </div>
 </template>
 

@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 
 
 // 라우터 에 대한 모든 정보. path 정의, 이름 정의, 불러올 component 정의. 
+// View 만 설정한다. components는 import만 해주면 됨
 
 
 const routes = [  
@@ -129,8 +130,24 @@ const routes = [
     name : 'watch',
     component : () => import(/* webpackChunkName: "extra", webpackPrefetch:true */ '../views/Extra/WatchView.vue')
   },
+  {
+    path : '/lifecycle',
+    name : 'lifecycle',
+    component : () => import(/* webpackChunkName: "extra", webpackPrefetch:true */ '../views/Extra/LifeCycleHookView.vue')
+  },
+  {
+    path : '/pageView_title',
+    name : 'pageView_title',
+    component : () => import(/* webpackChunkName: "reuse", webpackPrefetch:true */ '../views/reuse/PageView.vue')
+  },
+  {
+    path : '/parent',
+    name : 'parent',
+    component : () => import(/* webpackChunkName: "reuse", webpackPrefetch:true */ '../views/reuse/ParentView.vue')
+  },
 
 
+  
 ]
 
 

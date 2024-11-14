@@ -31,6 +31,13 @@
       <router-link to="/renderShow">RenderShow</router-link> |
       <router-link to="/computed">Computed</router-link> |
       <router-link to="/watch">Watch</router-link> |
+      <router-link to="/lifecycle">lifecycle</router-link> |
+      <br />
+      <br />
+      <router-link to="/pageView_title">PageView_title</router-link> |
+      <router-link to="/parent">ParentView-childComponent</router-link> |
+      
+      
 
 
 
