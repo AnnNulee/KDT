@@ -36,6 +36,8 @@
       <br />
       <router-link to="/pageView_title">PageView_title</router-link> |
       <router-link to="/parent">ParentView-childComponent</router-link> |
+      <router-link to="/grid">Table</router-link> |
+      <router-link to="/gridtest">Table:test</router-link> |
       
       
 

@@ -1,5 +1,6 @@
 <template>
 <div>
+    <p>{{childData}}</p>
     <p>{{str}}</p>
     <p>{{num}}</p>
     <p>{{bool}}</p>
@@ -15,7 +16,7 @@
 <script>
 
 export default{ 
-    name:'',
+    name:'child',
     components:{},
 
     props : {
@@ -57,11 +58,14 @@ export default{
     data(){
         return{
             selectedNum : 0,
+            childData : '자식컴포넌트의 데이터'
         };
     },
     setup(){},
     created(){},
-    mounted(){},
+    mounted(){
+        this.$emit('child-send', this.childData)
+    },
     unmounted(){},
     methods:{
         callParent(){ 
@@ -71,6 +75,9 @@ export default{
             /// 커스텀 이벤트 이름 이후에 나온 값만 파라미터로 받는다. 이름 이전에 값이 나오면 파라미터로 인지가 안됨
             this.$emit('change-num', this.selectedNum )
         },
+        childPrint(){
+            console.log(this.childData)
+        }
     }
 }
 

@@ -145,7 +145,16 @@ const routes = [
     name : 'parent',
     component : () => import(/* webpackChunkName: "reuse", webpackPrefetch:true */ '../views/reuse/ParentView.vue')
   },
-
+  {
+    path : '/grid',
+    name : 'grid',
+    component : () => import(/* webpackChunkName: "reuse", webpackPrefetch:true */ '../views/reuse/TableView.vue')
+  },
+  {
+    path : '/gridtest',
+    name : 'gridtest',
+    component : () => import(/* webpackChunkName: "reuse", webpackPrefetch:true */ '../views/reuse/TestTableView.vue')
+  },
 
   
 ]
