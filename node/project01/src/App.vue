@@ -38,6 +38,12 @@
       <router-link to="/parent">ParentView-childComponent</router-link> |
       <router-link to="/grid">Table</router-link> |
       <router-link to="/gridtest">Table:test</router-link> |
+      <router-link to="/slot">SlotModal</router-link> |
+      <router-link to="/propdrilling">Prop Drilling</router-link> |
+      <br />
+      <br />
+      <router-link to="/customDirective">Custom Directive</router-link> |
+      
       
       
 

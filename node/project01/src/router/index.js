@@ -155,6 +155,22 @@ const routes = [
     name : 'gridtest',
     component : () => import(/* webpackChunkName: "reuse", webpackPrefetch:true */ '../views/reuse/TestTableView.vue')
   },
+  {
+    path : '/slot',
+    name : 'slot',
+    component : () => import(/* webpackChunkName: "reuse", webpackPrefetch:true */ '../views/reuse/SlotModalView.vue')
+  },
+  {
+    path : '/propdrilling',
+    name : 'propdrilling',
+    component : () => import(/* webpackChunkName: "reuse", webpackPrefetch:true */ '../views/reuse/RootView.vue')
+  },
+  {
+    path : '/customDirective',
+    name : 'customDirective',
+    component : () => import(/* webpackChunkName: "advanced", webpackPrefetch:true */ '../views/advanced/CustomDirectiveView.vue')
+  },
+  
 
   
 ]

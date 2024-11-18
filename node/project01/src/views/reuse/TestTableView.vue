@@ -1,11 +1,13 @@
 <template>
 <div>
     <button @click="sendData" class="btn btn-primary">누르면 데이터가 테이블 컴포넌트로 전송된다고</button>
+    <button @click="doDelete">삭제</button>
     <br />
     <Simple
     :headers = "headers"
     :items = "moneyData"
     @saveOption="dataSelect"
+    @checkedEvent="checkBoxSelected"
     />
 
 </div>
@@ -28,6 +30,8 @@ export default{
                 {title : "buy", key : 'buy'},
                 {title : "diff", key : 'diff'},
             ],
+            checkedItems : [],
+
         };
     },
     setup(){},
@@ -74,9 +78,21 @@ export default{
             }
 
             else {
-                this.sendData()
+                this.moneyData = this.fullData
+                return this.moneyData
             }
-        }
+        },
+        checkBoxSelected(data){
+            console.log(data)
+            this.checkedItems = data
+        },
+        doDelete(){
+            this.moneyData = this.moneyData.filter( (data) => 
+            !this.checkedItems.includes(data.exchange) /// A.includes(B) = A를 포함한 B만.
+            )
+
+        },
+        
     
     }
         
