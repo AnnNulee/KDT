@@ -1,0 +1,5 @@
+{
+    "greeting" : "hello!",
+    "welcome" : "welcome to my site, {a}!",
+    "language" : "English"
+}
