@@ -105,6 +105,9 @@
                     <a class="nav-link" @click="goToMenu('/plugin')">PlugIn</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" @click="goToMenu('/vuex')">Vuex todos</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link disabled" aria-disabled="true">aria-disabled="true"</a>
                 </li>
             </ul>

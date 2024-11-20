@@ -180,6 +180,11 @@ const routes = [
     name : 'plugin',
     component : () => import(/* webpackChunkName: "advanced", webpackPrefetch:true */ '../views/advanced/PluginView.vue')
   },
+  {
+    path : '/vuex',
+    name : 'vuex',
+    component : () => import(/* webpackChunkName: "advanced", webpackPrefetch:true */ '../views/advanced/VuexView.vue')
+  },
   
   
 
