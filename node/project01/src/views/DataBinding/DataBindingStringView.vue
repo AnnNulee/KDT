@@ -3,11 +3,14 @@
 <div>
     <p v-pre> string의 binding 은 {{중괄호}}로 불러온다. </p>
     <p> binding 할 data 는 script - export defalt{} - data() 내부에 정의되어있어야 한다.</p>
+
     <h1>{{ userName }}님, welcome </h1>
+
     <p v-pre> 코드 ==> {{ userName }}님, welcome </p>
     <br/>
     <br/>
     <p>{{ msg }}</p>
+    
     <p v-pre>코드 ==> {{ msg }}</p>
     <br/>
     <br/>

@@ -4,9 +4,11 @@
     <p>{{ todosCount }}</p>
     <p>완료 : {{ doneTodosCount }}</p>
     <p>안완료 : {{ notDoneTodosCount }}</p>
+    <p>{{ isLogin }}</p>
     <button @click="addItem">additem</button>
     <button @click="removeItem(4)">remove Item</button>
     <button @click="doneYN({id:1, done:false})">change</button>
+    <button @click="removeAll">삭제</button>
 </div>
 </template>
 
@@ -34,11 +36,16 @@ export default{
         notDoneTodosCount(){
             return this.$store.getters['todoModules/notDoneTodosCount']
         }, 
+        isLogin(){
+            return this.$store.getters['todoModules/isLogin']
+        },
     },
 
     setup(){},
     created(){},
-    mounted(){},
+    mounted(){
+        this.$store.commit('todoModules/setUserInfo')
+    },
     unmounted(){},
     methods:{
         addItem(){
@@ -51,6 +58,10 @@ export default{
         doneYN(doneState){
             this.$store.commit('todoModules/doneYN', doneState)
         },
+        removeAll(state){
+            this.$store.commit('todoModules/removeAll')
+        },
+        
     }
 }
 

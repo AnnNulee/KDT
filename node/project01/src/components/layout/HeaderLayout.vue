@@ -76,37 +76,69 @@
                     </ul>
                 </li>
 
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Event
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" @click="goToMenu('/click')">Click</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/change')">Change</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/changeP')">Change-Practice</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/key')">Key</a></li>
+                    </ul>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Extra
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" @click="goToMenu('/String')">Action</a></li>
-                        <li><a class="dropdown-item" @click="goToMenu('/attribute')">attribute</a></li>
-                        <li><a class="dropdown-item" @click="goToMenu('/html')">html</a></li>
-                        <li><a class="dropdown-item" @click="goToMenu('/input')">input</a></li>
-                        <li><a class="dropdown-item" @click="goToMenu('/class')">class</a></li>
-                        <li><a class="dropdown-item" @click="goToMenu('/attribute')">attribute</a></li>
-                        <li><a class="dropdown-item" @click="goToMenu('/list')">list</a></li>
-                        <li><a class="dropdown-item" @click="goToMenu('/csr')">Checkbox + Select + Radio</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/render')">Render</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/renderShow')">RenderShow</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/computed')">Computed</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/watch')">Watch</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/lifecycle')">lifecycle</a></li>
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" @click="goToMenu('/pageView_title')">Reuse</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Reuse
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" @click="goToMenu('/pageView_title')">PageView_title</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/parent')">ParentView-childComponent</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/grid')">Table</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/gridtest')">Table:test</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/slot')">SlotModal</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/propdrilling')">Prop Drilling</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" @click="goToMenu('/customDirective')">Advanced</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Advanced
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" @click="goToMenu('/customDirective')">Custom Directive</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/mixin')">Mixin</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/plugin')">PlugIn</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/vuex')">Vuex todos</a></li>
+                        <li><a class="dropdown-item" @click="goToMenu('/auth')">kakao Login</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" @click="goToMenu('/mixin')">Mixin</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Api Connect
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" @click="goToMenu('/auth')">kakao Login</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" @click="goToMenu('/plugin')">PlugIn</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" @click="goToMenu('/vuex')">Vuex todos</a>
-                </li>
+
+
                 <li class="nav-item">
                     <a class="nav-link disabled" aria-disabled="true">aria-disabled="true"</a>
                 </li>

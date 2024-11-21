@@ -23,6 +23,7 @@ app.component('PageTitle', PageTitle)
 /// 활용할 컴포넌트를 이렇게 적용할 수 있다. 
 // 이걸 해놓으면 컴포넌츠 활용할 때, 해당 컴포넌트 파일에서 import를 따로 하지 않아도 된다. 
 app.mount('#app')
+window.Kakao.init('38704b2752e5900f74ea3b9c385e003c')
 
 
 // 1번 ) 맨 먼저 app(App.vue) 로 갑니다. // store(폴더), router(폴더) 연결 됨 
