@@ -59,7 +59,7 @@
 
 
 function longTask() {
-    const start = Date.now() // 호출 스택에 들어가는 순간 시간을 start 변수에 저장.
+    const start = Date.now() // 호출 스택에 들어가는 순간의 시간이 start 변수에 저장됨.
     while (Date.now() - start < 5000) {  
         // '현재시간'이 start에 기록된 시간보다 3초보다 커지면 false : while탈출 
     }

@@ -1,6 +1,6 @@
 
 // javaScript의 방식
-// import var from './var'
+// import var from './varExport'
 
 
 

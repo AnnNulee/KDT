@@ -1,6 +1,6 @@
 <template>
 <div>
-    <img src="Vue logo" alt="../assets/logo.png">
+    <img src="@/assets/logo.png" alt="vueLogo">
     <HelloWorld msg="이게 헬로 월드 메세지임"/>
 </div>
 </template>

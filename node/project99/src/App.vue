@@ -1,6 +1,10 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link>
+    <router-link to="/">Home</router-link> | 
+    <router-link to="/string">String</router-link> | 
+    <router-link to="/input">Input</router-link> | 
+    <router-link to="/"></router-link> | 
+
   </nav>
   <router-view/>
 </template>

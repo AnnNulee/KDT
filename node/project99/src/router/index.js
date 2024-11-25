@@ -10,7 +10,12 @@ const routes = [
     {
         path: '/string',
         name: 'string',
-        component: HomeView,
+        component : () => import(/* webpackChunkName: "DataBinding", webpackPrefetch:true */ '../views/DataBinding/StringView.vue')
+    },
+    {
+        path: '/input',
+        name: 'input',
+        component : () => import(/* webpackChunkName: "DataBinding", webpackPrefetch:true */ '../views/DataBinding/InputView.vue')
     },
 ]
 

@@ -11,39 +11,39 @@ const path = require('path')
 
 // process : 바로 부르기 가능
 
-// // 현재경로
-// console.log(process.cwd()) 
+// 현재경로
+console.log(process.cwd()) 
 
-// // pid 현재 process의 id
-// console.log(process.pid)
+// pid 현재 process의 id
+console.log(process.pid)
 
-// //Node의 버전
-// console.log(process.version)
+//Node의 버전
+console.log(process.version)
 
-// // cpu architecture. x64 64비트짜리라는거임. 
-// console.log(process.arch)
+// cpu architecture. x64 64비트짜리라는거임. 
+console.log(process.arch)
 
-// // 내 컴퓨터의 운영체제
-// console.log(process.platform)
+// 내 컴퓨터의 운영체제
+console.log(process.platform)
 
 
 //------------------------------------------------------------
 
 
-// // OS 
-// // cpu architecture. x64 64비트짜리라는거임. 
-// console.log(os.arch())
-// // 운영체제
-// console.log(os.platform())
-// console.log(os.type())
-// // 시스템 호스트이름
-// console.log(os.hostname())
-// // cpu 정보
-// console.log(os.cpus())
-// // 사용가능 메모리 정보 : 바이트기준 용량표기. / 나누기적용 : 기가바이트
-// console.log(os.freemem() / (1000*1000*1000))
-// // 총 메모리 ( ram + cpu )
-// console.log(os.totalmem() / (1000*1000*1000))
+// OS 
+// cpu architecture. x64 64비트짜리라는거임. 
+console.log(os.arch())
+// 운영체제
+console.log(os.platform())
+console.log(os.type())
+// 시스템 호스트이름
+console.log(os.hostname())
+// cpu 정보
+console.log(os.cpus())
+// 사용가능 메모리 정보 : 바이트기준 용량표기. / 나누기적용 : 기가바이트
+console.log(os.freemem() / (1000*1000*1000))
+// 총 메모리 ( ram + cpu )
+console.log(os.totalmem() / (1000*1000*1000))
 
 
 //------------------------------------------------------------
