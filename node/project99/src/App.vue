@@ -3,6 +3,8 @@
     <router-link to="/">Home</router-link> | 
     <router-link to="/string">String</router-link> | 
     <router-link to="/input">Input</router-link> | 
+    <router-link to="/html">Html</router-link> | 
+    <router-link to="/class">Class</router-link> | 
     <router-link to="/"></router-link> | 
 
   </nav>

@@ -13,10 +13,31 @@ const routes = [
         component : () => import(/* webpackChunkName: "DataBinding", webpackPrefetch:true */ '../views/DataBinding/StringView.vue')
     },
     {
+        path: '/html',
+        name: 'html',
+        component : () => import(/* webpackChunkName: "DataBinding", webpackPrefetch:true */ '../views/DataBinding/HtmlView.vue')
+    },
+    {
         path: '/input',
         name: 'input',
         component : () => import(/* webpackChunkName: "DataBinding", webpackPrefetch:true */ '../views/DataBinding/InputView.vue')
     },
+    {
+        path: '/class',
+        name: 'class',
+        component : () => import(/* webpackChunkName: "DataBinding", webpackPrefetch:true */ '../views/DataBinding/ClassView.vue')
+    },
+    {
+        path: '/input',
+        name: 'input',
+        component : () => import(/* webpackChunkName: "DataBinding", webpackPrefetch:true */ '../views/DataBinding/InputView.vue')
+    },
+    {
+        path: '/input',
+        name: 'input',
+        component : () => import(/* webpackChunkName: "DataBinding", webpackPrefetch:true */ '../views/DataBinding/InputView.vue')
+    },
+
 ]
 
 

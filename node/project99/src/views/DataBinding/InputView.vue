@@ -2,6 +2,7 @@
 <div>
     <button @click="clickEvent">userId 로그출력</button>
     <button @click="changeUserId">useId 'taeyoon'으로 변경</button>
+    <input type="text" v-model.number="num1" />+<input type="text" v-model.number="num2">=<span>{{ num1 + num2 }}</span>
 </div>
 </template>
 
