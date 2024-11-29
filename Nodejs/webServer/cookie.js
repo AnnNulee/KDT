@@ -89,10 +89,17 @@ http.createServer(async (req, res) => { //req를 받을때, res를 어떻게 줄
         }
 
 
+// 싱글 쓰레드 서버는 하나의 프로세스에서 모든 클라이언트 요청을 처리.
+// 각 클라이언트마다 별도의 프로세스를 생성하지 않고, 하나의 프로세스가 여러 클라이언트의 요청을 동시에 처리하는 방식.
+// 그렇기 때문에 시간이 걸릴만한 작업들, '파일 불러오기' 등은 모두 비동기처리를 실시해준다. 
+
         //로그인 안된상태면 cookie.html 보여줘
         else {
             try {
                 const data = await fs.promises.readFile(path.join(__dirname, 'cookie.html'));
+                // 현재 디렉토리(__dirname)에 있는 cookie.html 파일을 읽습니다
+                // await 키워드를 사용했으므로, 아래 작업은 파일 읽기가 완료될 때까지 대기합니다.
+                // 파일 읽기가 성공하면, data에 파일 내용(HTML 문서)이 저장됩니다.
                 res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
                 res.end(data);
             } catch (err) {

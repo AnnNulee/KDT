@@ -1,0 +1,13 @@
+middleware 폴더 자체가 새로운 package의 루트폴더가 된다.
+그럼 여기서 필요한 패키지를 다시 설치해줘야한다. 
+
+터미널에서 사용할 단축키를 만들고싶으면 
+
+package.json 파일에서 
+ "scripts": {
+    "start" : "nodemon app",
+ },
+
+ 이런식으로 추가. 
+
+ 터미널에서 npm start 하면 nodemon app 명령어가 실행된다. 

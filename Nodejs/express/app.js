@@ -11,7 +11,7 @@ const fs = require('fs');
 // express에서는 서버를 app이라고 부른다. 
 const app = express(); // 서버 생성 명령어
 
-// const PORT = process.env.PORT || 3000; // 중요한 값들 지정해서 모아놓는 qkdqjq.  
+// const PORT = process.env.PORT || 3000; // 중요한 값들 지정해서 모아놓는 방법 
 app.set('PORT', process.env.PORT || 3000 ); // 포트설정
 
 
