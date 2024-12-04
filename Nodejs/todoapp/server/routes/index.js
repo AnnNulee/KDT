@@ -25,8 +25,10 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res)=>{
     const {id} = req.params
-    // todos = todos.map(todo=> todo.id == id ? { ...todo, ...req.body} : todo)
+    // todos = todos.map(todo=> todo.id == id ? { ...todo, ...req.body} : todo) : todo object 뒤에 req.body (done)을 붙여줌. 그럼 done키의 value가 덮어씌워진다. 
     todos = todos.map(todo=> todo.id == id ? {id:id, title:todo.title, done: req.body.done} : todo)
+    //for문은 효율적이지 않다. 각각의 요소에다가 함수든 메서드를 적용하고싶을 때 적용하는게 map. 실제 for문보다 가볍다.
+    // .map은 array의 함수. 
     res.end()
     console.log('Todo Done 업데이트 완료')
     console.log(todos)

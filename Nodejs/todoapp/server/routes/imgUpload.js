@@ -40,6 +40,7 @@ const upload = multer({storage})
 
 
 router.post('/upload', upload.single('image'), (req, res) => {
+    // upload.single 이 들어온 폼데이터를 처리해주는 역할을 한다. 
     // 받은 req에서 어떤 값을 어떻게 파싱할거냐. 생각을 해봐야함
     const imageUrl = `/uploads/${req.file.filename}`  // 파일경로
     res.json({imageUrl}) // 리퀘스트 보낼때의 데이터 형식
@@ -50,10 +51,16 @@ router.post('/upload', upload.single('image'), (req, res) => {
 router.get('/', (req, res) => {
     const dirPath = path.join(__dirname, '../uploads'); 
     fs.readdir(dirPath, (err, files) => {  // uploads 내에 있는 file 전체 검색, '파일 이름만' 배열 형태로 가져온다. 
+        //readdir 경로 내의 파일을 검색해주는것. 그 파일들로 뭐 어떤걸 하겠다 하는것은 콜백임. 
         if (err) { // 에러처리
             return res.status(500).json({error: '디렉토리 없음'})
         }
-        const imageUrls =files.map(file => `/server/uploads/${file}`)  // img의 url들을 업로드 밑의 ~파일 식으로 변환
+        const imageUrls =files.map(file => `uploads/${file}`)  // img의 url들을 업로드 밑의 ~파일 식으로 변환
+        // todoView의 getImages 함수에서 받을 res 만드는 함수.
+        // 여기서짜주는 이미지 경로를 res로 반환할 예정.
+        // 현재 서버는 어디서 실행되고 있냐면, server폴더 내부에서 실행중임.
+        // 그렇기 때문에 (file => `/server/uploads/${file}`) 이렇게 쓰면, 'server' 폴더 내의 'server'를 찾게 된다. 중복임. 오류난다. 
+        // 그렇기 때문에 중복되는 루트폴더 이름을 지워줘야 한다. 
         res.json(imageUrls) // url를 json 형태로 수정. 
     })
 }) 

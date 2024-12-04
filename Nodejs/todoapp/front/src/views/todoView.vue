@@ -3,16 +3,24 @@
     <h1>My To-Do App</h1>
     <div>
         <div id="carouselExample" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
         <div class="carousel-inner">
             <div class="carousel-item"
             :class="{active: index === 0}"
-            v-for = "(image, index) in image"
+            v-for = "(singleImage, index) in imageData"
             :key = "index">
-                <img src="image" class="d-block w-100" alt="...">
+                <img :src="`http://localhost:3000/${singleImage}`" class="d-block w-100" alt="..."  :style="{
+                    height: '150px',
+                    objectFit:  'cover',
+                    width: '100%'
+                }">
             </div>
             <br>
             <br>
-            <p>지금은 서버가 두개 다 로컬폴더 내에 있기 때문에 src를 로컬 경로로 접근이 가능한 상태니까, 우리가 하고자 하는건. 개별적인 서버를 연동시키는 작업을 해야하기 때문에 front에서 server에 사진을 req을 get요청하여 서버간의 data전달을 짜주는 것. </p>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -24,6 +32,8 @@
         </button>
         </div>
     </div>
+     <p>지금은 서버가 두개 다 로컬폴더 내에 있기 때문에 src를 로컬 경로로 접근이 가능한 상태니까, 우리가 하고자 하는건. 개별적인 서버를 연동시키는 작업을 해야하기 때문에 front에서 server에 사진을 req을 get요청하여 서버간의 data전달을 짜주는 것. </p>
+     <p>img : src 에서, 포트까지는 서버주소이고 그 이후는 이미지</p>    
     <div>
         <div>
             <form @submit.prevent="addTodo" class="input-group">
@@ -110,7 +120,7 @@ export default{
             choosenId:0,
 
             file : null, // 이미지파일이 들어오느냐 안들어오느냐 체크 
-            images: [],
+            imageData: [],
         };
     },
     setup(){},
@@ -171,7 +181,7 @@ export default{
 
         async getImages() {
             const response = await axios.get('http://localhost:3000/img');
-            this.images = response.data;
+            this.imageData = response.data;
             console.log(this.images)
         }
     }
