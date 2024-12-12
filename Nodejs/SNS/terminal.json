@@ -1,0 +1,31 @@
+C:\Users\projects\Nodejs>cd SNS
+
+C:\Users\projects\Nodejs\SNS>mkdir server
+
+C:\Users\projects\Nodejs\SNS>cd server
+    // npm은 이 경로안에 하나만. = package.json은 하나만.
+    // 부모폴더에 package.json이 있으면 자식폴더에 설치못함
+
+C:\Users\projects\Nodejs\SNS\server>npm install sequelize sequelize-cli    
+    // sequelize는 init 쓰려고 쓰는거임. 
+    // npx : 전역설치지만, 디펜던시에 넣어주는 역할. 
+    // npm 으로 설치하면 dependencies에 들어가는데 , 전역에 설치되는 애들은 디펜던시에 안들어간다. 
+
+
+C:\Users\projects\Nodejs\SNS\server>npx sequelize init
+
+C:\Users\projects\Nodejs\SNS\server>npm install express cors nodemon cookie-parser morgan dotenv mongoose multer
+
+// front 생성
+
+C:\Users\projects\Nodejs\SNS\server>cd ..
+
+C:\Users\projects\Nodejs\SNS>vue create front
+
+
+server에 app.js 파일 생성
+
+
+C:\Users\projects\Nodejs\SNS>cd front
+
+C:\Users\projects\Nodejs\SNS\front>npm install axios

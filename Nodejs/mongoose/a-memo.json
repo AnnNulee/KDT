@@ -1,0 +1,51 @@
+npm init
+//package.jason 생성
+
+npm install --save-dev sequelize-cli
+//(개발용환경에)cli 깔기
+
+npm install --sequelize
+//sequelize
+
+npm install --mysql2
+// mysql2 : node 와 mysql은 별개의 제품. 둘을 이어주는 mysql driver. 플러그인임. 
+
+npm install express
+// express : nodejs를 활용하는 "웹 서버를 구축하는" 웹 개발프레임워크 확장모듈
+// router는 express 내장.
+
+npm install -D nodemon
+npm install -dev nodemon
+// nodemon : 개발용 서버. 서버는 한번 실행되면 파일에 수정이 있어도 적용이 안된다. 바로바로 적용되도록 하는
+// -D , -dev : 개발용 환경.
+
+npm install morgan
+// morgan : url 요청 로그 찍기
+// 디펜던시에 설치. 개발시에는 상세히 기록, 배포시에는 간단히 기록. 
+
+npm install cors
+// cors : server와 front가 다른 서버(포트)에서 열리고 있다. 그럼 이 두개가 같은 프로세스 내에 있는 애들인지 잘 모른다. 이걸 연결시켜주는 친구임
+
+npm install dotenv
+
+npm install cookie-parser
+
+npm install mongoose
+// mongoose만 있으면 MongoDB를 이어주는 별개의 driver가 필요하지 않음
+
+npx sequelize init
+// sequelize는 init 쓰려고 쓰는거임. 
+// npx : 전역설치지만, 디펜던시에 넣어주는 역할. 
+// npm 으로 설치하면 dependencies에 들어가는데 , 전역에 설치되는 애들은 디펜던시에 안들어간다. 
+
+
+
+app.js 생성
+
+//-------------------------------------------------------------------------------//
+
+
+npm install vue
+//vue 설치
+
+
