@@ -28,10 +28,7 @@ db.Comment = Comment;
 
 
 User.initiate(sequelize); 
-<<<<<<< HEAD
 Comment.initiate(sequelize);
-=======
->>>>>>> 6785f83a141a2fa3487f64f379f172a60778904f
 
 
 // 데이터베이스 관계설정, associate(1:n 이런거 설정하는거.)

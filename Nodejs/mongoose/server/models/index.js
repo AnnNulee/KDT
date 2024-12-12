@@ -16,6 +16,8 @@ const connect = () => {
   }
   //MongoDB 연결. 'mongodb://아이디:비밀번호@서버/admin'
   // 여기서 MongoDB를 연결하면 내부에 있는 컬랙션을 자동으로 끌어온다. ==> 따로 import 해주지 않아도 연동됨. 
+  // mongoDB을 처음 실행하면 admin, local, config 가 자동으로 생성. 그리고 각각 역할이 있다. 
+  // admin : 관리자 기능. 실제 DB가 아니다. 
   mongoose.connect('mongodb://NULEE:1234@localhost:27017/admin', {
     dbName: 'nodejs',
     useNewUrlParser : true, // MongoDB에서 사용하는 urlparser, 이거 안하면 최신 MongoDB랑 연결 안됨.

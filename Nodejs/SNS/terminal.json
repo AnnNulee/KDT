@@ -7,21 +7,25 @@ C:\Users\projects\Nodejs\SNS>cd server
     // 부모폴더에 package.json이 있으면 자식폴더에 설치못함
 
 C:\Users\projects\Nodejs\SNS\server>npm install sequelize sequelize-cli    
+    // sequelize : node_modules, package.json, package-lock.json 폴더 생성
+    // sequelize-cli : ? 뭐가 바뀌었는지 몰로겠다.
+
     // sequelize는 init 쓰려고 쓰는거임. 
     // npx : 전역설치지만, 디펜던시에 넣어주는 역할. 
     // npm 으로 설치하면 dependencies에 들어가는데 , 전역에 설치되는 애들은 디펜던시에 안들어간다. 
 
 
 C:\Users\projects\Nodejs\SNS\server>npx sequelize init
+    // config/config.json, migrations, models/index.js, seeders 폴더 생성
 
-C:\Users\projects\Nodejs\SNS\server>npm install express cors nodemon cookie-parser morgan dotenv mongoose multer
+C:\Users\projects\Nodejs\SNS\server>npm install express cors nodemon cookie-parser dotenv mongoose multer morgan
 
 // front 생성
 
 C:\Users\projects\Nodejs\SNS\server>cd ..
 
 C:\Users\projects\Nodejs\SNS>vue create front
-
+    // vue 사용할수있도록. 
 
 server에 app.js 파일 생성
 
@@ -29,3 +33,5 @@ server에 app.js 파일 생성
 C:\Users\projects\Nodejs\SNS>cd front
 
 C:\Users\projects\Nodejs\SNS\front>npm install axios
+
+C:\Users\projects\Nodejs\SNS\server>npm install passport crypto express-session  // 로그인, 인증과 관련됨

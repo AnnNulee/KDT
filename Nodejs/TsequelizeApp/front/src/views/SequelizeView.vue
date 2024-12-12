@@ -121,7 +121,6 @@ export default{
                 return ; 
             }
             try{
-<<<<<<< HEAD
                 // 등록값이 추가된 새로운 data를 보여줘야한다.
                 // 방법 1. get으로 새로 가져오기.
 
@@ -141,19 +140,6 @@ export default{
 
                 // 방법 2. getUsers한번 더 돌리기
                 await axios.post('http://localhost:3000/user', this.newUser );
-=======
-                // 등록값이 추가된 새로운 data를 보여줘야한다. 
-                // 방법 1. get으로 새로 가져오기.
-                        // req 주소와 posting data 전달.
-                    // const response = await axios.POST('http://localhost:3000/user', this.newUser );
-                        // 사용자 목록 업데이트
-                    // this.users = response.data
-                        // 사용자 등록창 초기화
-                    // this.newUser = {name : '', age : null, married : false}
-
-                // 방법 2. getUsers한번 더 돌리기
-                                                                                            await axios.post('http://localhost:3000/user', this.newUser );
->>>>>>> 6785f83a141a2fa3487f64f379f172a60778904f
                 this.getUsers();
                 this.newUser = {name : '', age : null, married : false};
 
@@ -202,13 +188,9 @@ export default{
         async getComments(){
             try { 
                 const response = await axios.get('http://localhost:3000/comment');
-<<<<<<< HEAD
                 this.dbComments = response.data; 
                 // response 가 아니라 response.data를 담는 이유
                 // res 자체에는 여러가지 정보가 많은데, 우리가 server route에서 res.send('front에 전달') 등으로 담아 보내주는 정보는 'data' 속성에 담긴다. 
-=======
-                this.dbComments = response.data;
->>>>>>> 6785f83a141a2fa3487f64f379f172a60778904f
             } catch(err){
                 console.error(err);
             }
