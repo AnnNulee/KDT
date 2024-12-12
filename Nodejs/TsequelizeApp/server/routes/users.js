@@ -27,8 +27,12 @@ router.route('/')
             name: req.body.username,
             age: req.body.age,
             married: req.body.married,
+<<<<<<< HEAD
             comment: req.body.comment 
             // view페이지에서 data에 정의되지 않은 속성이기에 req.body.comment는 값이 없다. undefined 
+=======
+            comment: req.body.comment
+>>>>>>> 6785f83a141a2fa3487f64f379f172a60778904f
         });
         console.log(user);
         res.end()
