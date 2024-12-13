@@ -35,3 +35,5 @@ C:\Users\projects\Nodejs\SNS>cd front
 C:\Users\projects\Nodejs\SNS\front>npm install axios
 
 C:\Users\projects\Nodejs\SNS\server>npm install passport crypto express-session  // 로그인, 인증과 관련됨
+
+C:\Users\projects\Nodejs\SNS\server>npm install passport-local // 패스포트 인증방식 설치

@@ -14,9 +14,9 @@ exports.isLoggedIn = (req, res, next) => {
 
 
 exports.isNotLoggedIn = (req, res, next) => {
-    if (!req.isAuthenticateD() {
+    if (!req.isAuthenticated()) {
         next()
-    }) else {
+    } else {
         res.status(403).json({message: '이미 로그인한 상태입니다.'})
     }
 }

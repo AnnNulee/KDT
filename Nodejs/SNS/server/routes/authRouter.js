@@ -2,6 +2,7 @@ const express = require('express');
 const { isLoggedIn, isNotLoggedIn } = require('../middleware') // middleware로 기능 분리 
 // app.js에서 passport가 라우터 위에서 실행되기 때문에, 라우터로 갔을때 passport를 사용할 수 있다. 
 const { join, login, logout } = require('../controllers/auth')
+const router = express.Router();
 
 //middleware는 실행되면 지혼자 못끝남. 다음 넘어가는 next를 붙여줘야됨.
 

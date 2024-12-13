@@ -12,6 +12,7 @@ const cors = require("cors");
 const mongoose = require("mongoose")
 const session = require('express-session');
 const passport = require('passport'); // 이 인증 미들웨어는 session이 있어야 쓸 수 있기에 session 다음에 나와야 함
+const LocalStrategy = require('passport-local');
 
 // 2. 서버, 라우터, 포트, env 등 설정
 dotenv.config() // dotenv 쓰겠다 선언. congfig를 써야 사용가능.
@@ -22,6 +23,11 @@ const authRouter = require('./routes/authRouter');
 const postRouter = require('./routes/postRouter');
 const userRouter = require('./routes/userRouter');
 
+// 스키마
+const User = require("./schemas/user");
+
+
+//webserver
 const app = express(); // 서버생성
 app.set('port', process.env.PORT || 3000); //서버 포트 설정
 
@@ -60,12 +66,30 @@ app.use(session({ // 쿠키가 있어야 세션을 만드니까 쿠키파서 밑
 app.use(passport.initialize()); // 패스포트 사용하겠다. 
 app.use(passport.session()); // 인증방법론은 여러개가 있는데, 우리는 여기서는 인증전략 중 session을 쓰겠다.
 
+//passport-serialize : 세션을 만들 때 저장할 정보를 정의., signed시켜 안전하게 저장시켜줌. 세션에 사용자 id 저장
+passport.serializeUser((user, done) => {
+    console.log('Serialize User:', user)
+    done(null, user._id)
+})
+
+//passport-deserialize : 세션에 저장된 정보를 복원하여 DB와 비교하여 확인함. request가 다시들어올때 같이 들어오는 세션을 자꾸 확인을 해야한다. 
+passport.deserializeUser(async (id, done) => {
+    try {
+        const user = await User.findById(id);
+        done(null, user);
+    } catch(err){
+        console.error(err);
+        done(err)
+    }
+});
+
 
 // 5. 라우터 경로 설정해주기 (컨트롤 쓸때) 
+
 app.use('/', pageRouter);
 app.use('/auth', authRouter);
 app.use('/post', postRouter);
-app.use('/user', userRouter);
+//app.use('/user', userRouter);
 
 
 
@@ -73,14 +97,14 @@ app.use('/user', userRouter);
 
     //6-1. 404
 app.use((req, res, next) => {
-    const error = new error ( `${req.method} ${req.url} 라우터가 없습니다.`) 
+    const err = new Error ( `${req.method} ${req.url} 라우터가 없습니다.`) 
     // req.method : asxios 요청(get, post 같은거)메소드
-    error.status = 404;
+    err.status = 404;
     next(err)
 });
 
 app.use((err, req, res, next) =>{
-    console.error(err); // 콘솔에 에러 찍기 
+    console.error(`에러임((${err}))`); // 콘솔에 에러 찍기 
     res.status(err.ststus || 500).json({error:err.message});
 })
 

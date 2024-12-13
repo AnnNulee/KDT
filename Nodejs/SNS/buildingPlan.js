@@ -1,6 +1,8 @@
 const { Router } = require("express")
 const { post } = require("./server/routes/pageRouter")
 const { create } = require("./server/schemas/user")
+const { isNotLoggedIn } = require("./server/middleware")
+const { join } = require("path")
 
 1. front / back 을 나눌지, 같이 할지
 => api Server를 운용하겠다.Server를
@@ -104,3 +106,39 @@ SNS
         1-1. 인증 Strategies
             * 로그인 id, pw 입력하기
             * 로그인 id 와 db의 id와 일치하면, 
+
+
+
+-------------------------------------------------------
+
+3일차
+
+-postman : 무료, 사용 간단. 라이트. 
+    * 서버를 개발하는 중, 프론트가 없을 때는 post요청이 잘 이루어지는지 확인할 수 없다. 이럴 때 요청을 받아 결과를 보여주는 프로그램
+
+1.passport & passport-local 설치
+    * passport : 인증
+    * passport-local : passport의 인증전략중 하나
+2. middleware 
+    * isNotLoggedIn : 로그인 안된 상태면 true
+    * isLoggedIn : 로그인 된 상태면 true
+3. Auth Router 만들기
+    * '/join', isNotLoggedIn, join
+    * '/login', isNotLoggedIn, login
+    * '/logout', isLoggedIn, logout
+4. controller
+    * join : 회원가입 (post)=> 사용자로부터 회원 정보를 입력받아 해당 정보를 MongoDB에 저장
+    * login : 로그인 (post) => 사용자로부터 로그인 정보를 받아 MongoDB에 있는 데이터와 비교, 로그인 실행
+    * logout : 로그아웃 (get)=> 요청이 들어오면 로그아웃 상태로 변환
+5. LocalStrategy
+    (1) 사용자로부터 받은 로그인 정보 값을 DB에 있는 정보와 비교. 
+    (2) 회원가입에서 사용한 암호화 규칙을 적용해서 DB에 저장된 암호와 비교 
+    (3) user 정보를 다음 미들웨어로 전달. 
+6. serialize & deserialize 만들기
+    * serialize : 사용자 정보를 세션에 저장
+    * deserialize : 사용자 정보를 복원
+
+--------------------------------------------------------
+
+-게시판 기능
+    *
