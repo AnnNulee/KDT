@@ -7,6 +7,22 @@ const LocalStrategy = require('passport-local').Strategy; // passport의 인증 
 dotenv.config();
 // 회원가입
 
+// exports.duplicatedUser = async (req, res, next) =>{
+//     try {
+//         const snsIdDup = req.body.snsId
+//         const emailDup = req.body.email
+//         const nickDup = req.body.nick
+//         const phoneDup = req.body.phone
+        
+//         if (await User.findOne({snsId: snsIdDup})){
+//             res.json({duplicate : true})
+//         } else {
+//             res.json({duplicate:false})
+//         }
+        
+//     }
+// }
+
 exports.join = async (req, res, next) => {
     //schemas/user 보고 어떤 값이 들어와야하는지 확인해봐
     const { snsId, password, email, nick, phone} = req.body; //해당 정보들은 클라이언트가 req 로 보내줄 것.
@@ -15,7 +31,7 @@ exports.join = async (req, res, next) => {
         // 중복검사. snsId, email, phone은 unique=ture 니까,
         const duplicatedUser = await User.findOne({$or:[{snsId}, {email}, {phone}]}) // 해당 요소중 일치하는게 있으면 dplicatedUser에 넣어라
         if (duplicatedUser) { // 이게 있으면, 에러띄워라. 
-            return res.redirect('/join?error=exist');
+            return res.json({error:'exist'});
         }
         //비밀번호 암호화(PBKDF2 암호화 방식)
         const salt = process.env.SALT
@@ -76,7 +92,7 @@ passport.use(new LocalStrategy({
 //로그인
 exports.login = async (req, res, next) => {
     console.log(`loginreq:${req}, loginres:${res}`);
-    passport.authenticate('local', (authError, user, info)=> { 
+    passport.authenticate('local', (authError, user, info)=> {  //위에 만들어준 로컬 함수에서 '로그인'
         console.log(`인증완료 ${user}`)
         // 'local' : passport 폴더에는 서비스별 각각의 인증전략을 만들어준다. 여기서 우리는 'local' 파일 전략을 쓸거임. 
         // 'local' 은 우리가 위에서 설정해준 LocalStrategy 함수를 실행함.
@@ -90,7 +106,7 @@ exports.login = async (req, res, next) => {
         // 로그인 안된상태, 실패의 원인 정보가 같이 옴.
         if (!user) { 
             console.log(`loginuser:${user}`);
-            return res.redirect(`/?error=${info.message}`) //redirect니까 get
+            return res.json({error:info.message}); //redirect니까 get
         }
         // 로그인 정보 들어온 상태에서, 로그인 에러 나오면 에러표기, 없으면 도메인으로 리다이렉.
         return req.login(user, (loginError) => {

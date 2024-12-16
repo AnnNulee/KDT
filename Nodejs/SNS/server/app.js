@@ -41,7 +41,10 @@ mongoose.connect(process.env.DB_URI).then(() => {
 })
 
 // 3. 미들웨어 
-app.use(cors()); // 서버 - front 포트 연결
+app.use(cors(
+    { origin : "http://localhost:8080" , // 프론트엔드주소
+        credential : true},
+)); // 서버 - front 포트 연결
 app.use(morgan('dev'));
 app.use(express.json()); // body parser : 미리 파싱을 해놓아야 router에서 쓰이는 req.body()함수를 쓸 수 있다.
 app.use(express.urlencoded({extended : false})); /// body parser : 

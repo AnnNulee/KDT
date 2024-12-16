@@ -1,8 +1,12 @@
 const { Router } = require("express")
 const { post } = require("./server/routes/pageRouter")
 const { create } = require("./server/schemas/user")
-const { isNotLoggedIn } = require("./server/middleware")
+const { isNotLoggedIn, isLoggedIn } = require("./server/middleware")
 const { join } = require("path")
+const { request } = require("http")
+const { renderMain } = require("./server/controllers/page")
+const { login } = require("./server/controllers/auth")
+const User = require("./server/schemas/user")
 
 1. front / back 을 나눌지, 같이 할지
 => api Server를 운용하겠다.Server를
@@ -25,6 +29,66 @@ SQL DB = > user의 정보 데이터를 기반한 관계형성때문에 RDB를 �
 
 SNS 
 
+
+------------------------------------------------------------------------------
+라우터 구조
+
+1. app.js 
+    1. localhost:3000 '/' => routes/pageRouter
+        - localhost:3000'/' => controller : renderMain
+        - localhost:3000'/join' => middleware : isNotLoggedIn / controller : renderProfile  // 회원가입은 auth 아니야?
+        - localhost:3000'/profile' => middleware : isLoggedIn / controller : renderProfile
+        * controllers/page
+            - renderMain
+            - renderProfile
+            - renderJoin
+
+    2. localhost:3000 '/auth' => routes/authRouter
+        - localhost:3000/auth'/join' => middleware : isNotLoggedIn / controller : join 
+        - localhost:3000/auth'/login' => middleware : isNotLoggedIn / controller : login
+        - localhost:3000/auth'/logout' => middleware : isLoggedIn / controller : logout
+        * controllers/auth
+            - join
+                1.  Unique값 (snsId, email, phone) 중복비교
+                    - 입력받은 데이터(req.body)와 일치하는 User의 Document가 있다면(findOne), 값을 저장 
+                    - (1)의 값이 존재할경우, 에러띄우기
+                    - (1)의 값이 존재하지 않을 경우(값이 중복되지 않는 경우) 비밀번호 암호화
+                2.  비밀번호 crypto hash화 (암호화)
+                    - salt값 주기
+                    - req.body.password를 crypto함수로 hash 생성해서 값 저장.
+                3. User 콜렉션에 Document 하나 생성
+                    - 입력받은 req.body.key 값을 document.key에 대입하기
+                    - await User.create({document.key : req.body.key})
+                        -password key는 (2)에서 생성한 hash값을 대입.
+                        * document 내에는 실제 password값이 아닌 password 의 hash값이 저장됨.
+                        * 로그인 시에도 hash화 하여 비교할 예정
+                    - 도메인으로 redir
+            - login
+                1. req(loginData) 값을 로컬인증전략인 authenticate(passport-local.Strategy)함수에 적용.
+                    - LocalStrategy
+                    * passport에서는 인증과정의 결과를 반환하는 callback함수인 done(error, user, info)를 사용한다.
+                        1. 아이디 검증
+                            - 전달받은 req.body의 snsId가 User의 snsId와 일치하는 도큐먼트가 있는경우, 해당 '도큐먼트' 저장
+                            - (1)값이 존재하지 않을 경우(아이디가 없으면), done(에러null, 유저정보false, 실패메세지) return.
+                            - (1)값이 존재하는 경우(아이디가 있으면), 전달받은 req.body의 password를 crypto-hash화. 
+                        2. 비밀번호 검증
+                            - 전달받은 req.body의 password를 hash화
+                            - hash화된 password를 User의 password와 일치하는 도큐먼트 있는지 비교
+                            - 일치하는 도큐먼트가 없을 경우, done으로 실패메세지
+                            - 일치하는 도큐먼트가 있을 경우, done으로 User data 반환
+
+            - logout
+        
+    3. localhost:3000 '/post' => routes/postRouter
+        - localhost:3000/post'/img' => middleware : isLoggedIn, upload.single('img') / controller : afterUploadImage
+        - localhost:3000/post'/' => middleware : isLoggedIn, upload2.none() / controller : Uploadpost
+        - localhost:3000/post'/update/:postId' => middleware : isLoggedIn, upload2.none() / controller : updatePost
+        - localhost:3000/post'/delete/:postId' => middleware : isLoggedIn / controller : deletePost
+        
+    -middleware
+        * isLoggedIn : req.isAuthenticated
+        * isNotLoggedIn : !req.isAuthenticated
+    
 -------------------------------------------------------------------------------
 
 1일차. 
@@ -141,4 +205,17 @@ SNS
 --------------------------------------------------------
 
 -게시판 기능
-    *
+    * 사진 올리기
+    * 게시글 올리기
+    * 게시글 조회
+    * 게시글 삭제
+    * 게시글 수정
+        - content, img, hashtag 수정 
+
+-front 개발
+
+* joincomponent
+    -method 
+        1. Post 요청 ( 회원 정보를 가지고 회원가입요청 request)
+        2. 
+
