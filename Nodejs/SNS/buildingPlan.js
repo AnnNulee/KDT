@@ -7,6 +7,7 @@ const { request } = require("http")
 const { renderMain } = require("./server/controllers/page")
 const { login } = require("./server/controllers/auth")
 const User = require("./server/schemas/user")
+const { afterUploadImage, Uploadpost, updatePost } = require("./server/controllers/post")
 
 1. front / back 을 나눌지, 같이 할지
 => api Server를 운용하겠다.Server를
@@ -74,17 +75,43 @@ SNS
                         2. 비밀번호 검증
                             - 전달받은 req.body의 password를 hash화
                             - hash화된 password를 User의 password와 일치하는 도큐먼트 있는지 비교
-                            - 일치하는 도큐먼트가 없을 경우, done으로 실패메세지
-                            - 일치하는 도큐먼트가 있을 경우, done으로 User data 반환
-
+                            - 일치하는 도큐먼트가 "없을" 경우, done으로 실패메세지
+                            - 일치하는 도큐먼트가 "있을" 경우, done으로 User data 반환
+                
+                2.  함수에서 전달받은 데이터: (인증에러, 로그인정보, 실패메세지)
+                    - 로그인정보가 정상적으로 들어올 경우 : 인증 완료.
+                    - 인증에러가 있을 경우 : 인증에러 전송
+                    - 로그인이 안 된 상태에서 실패정보가 있을 경우 : 실패 메세지 반환(json)
+                    - 로그인 정보가 들어왔지만 에러도 같이 오는 경우 : 에러 전송, 메인으로 redir
             - logout
-        
+                1. '.logout' 함수로 로그 아웃. 
+
+
     3. localhost:3000 '/post' => routes/postRouter
         - localhost:3000/post'/img' => middleware : isLoggedIn, upload.single('img') / controller : afterUploadImage
-        - localhost:3000/post'/' => middleware : isLoggedIn, upload2.none() / controller : Uploadpost
+        - localhost:3000/post'/' => middleware : isLoggedIn, upload2.none() / controller : uploadPost
         - localhost:3000/post'/update/:postId' => middleware : isLoggedIn, upload2.none() / controller : updatePost
         - localhost:3000/post'/delete/:postId' => middleware : isLoggedIn / controller : deletePost
-        
+        * controller/post
+            -afterUploadImage
+                1. 이미지의 path정보 전송. / res.json({url : `img/${req.file.filename}`})  
+            -uploadPost
+                1. POST schema에 새 document 정의. 
+                    - Post.create({content : req.body.content, img : req.body,url, user : req.user_id})
+                2. content에서 hashtag 구분하기
+                    - req.body.content.match(정규화코드)
+                    - 매칭되는 모든 부분을 '배열'로 반환.
+                    - 매칭값이 없는 경우 'null'값
+                3. 해쉬태그가 있을 경우 
+                    - hashtags 배열에 map 적용
+                        * map : 내부요소 하나하나에 함수 적용 후 배열로 반환.
+                    -
+
+
+            -updatePost
+            -deletePost
+
+
     -middleware
         * isLoggedIn : req.isAuthenticated
         * isNotLoggedIn : !req.isAuthenticated
