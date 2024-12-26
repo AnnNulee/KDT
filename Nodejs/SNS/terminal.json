@@ -26,6 +26,7 @@ C:\Users\projects\Nodejs\SNS\server>cd ..
 
 C:\Users\projects\Nodejs\SNS>vue create front
     // vue 사용할수있도록. 
+    // babel, router, vuex 사용설정. eslint는 너무 까다로워지니까 설치안함
 
 server에 app.js 파일 생성
 

@@ -1,0 +1,12 @@
+SELECT *  FROM 주문 WHERE 수량 >= 20;
+SELECT * FROM 주문 WHERE 주문제품 = 'p03';
+SELECT 주문일자, 주문제품 FROM 주문 WHERE 주문고객 = 'APPLE';
+SELECT * FROM 고객 WHERE 나이 IS NULL;
+SELECT * FROM 제품 WHERE 재고량 >= 2000 AND 재고량 <= 4000 ;
+SELECT * FROM 제품 WHERE 재고량 BETWEEN 2000 AND 4000;
+
+
+SELECT * FROM 제품;
+SELECT * FROM 제조업체;
+SELECT * FROM 고객;
+SELECT * FROM 주문;
