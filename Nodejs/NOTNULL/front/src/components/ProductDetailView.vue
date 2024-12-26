@@ -1,7 +1,7 @@
 <template>
 <div>
     <div>
-        {{주류.대표이미지}} url 바인딩?
+        {{selectedProduct.main_image}} // url 바인딩
     </div>
     <div> 
         <h1>{{selectedProduct.name}}</h1>
@@ -12,12 +12,12 @@
             <button @click="plusQ">-</button>
             <input type="number" v-model="orderQuantity" >
             <button @click="minusQ">+</button>
-            <p>{{selectedProduct.price}} X {{orderQuantity}}</p>
+            <p>{{selectedProduct.price * orderQuantity}}</p>
         </div>
         <div>
-            <button @click="addLikes">찜</button> 클릭 시 찜 엔터티에 추가. (제품아이디만 받기)
-            <button @click="addCarts">장바구니</button> 클릭 시 장바구니 엔터티에 추가 + "장바구니로 갈래? y/n" (제품+갯수 받기)
-            <button @click="dirOrder">바로구매</button> 클릭시 주문엔터티에 추가 + 주문페이지로 이동 
+            <button @click="addLikes">찜</button>
+            <button @click="addCarts">장바구니</button> 
+            <button @click="dirOrder">바로구매</button> 
         </div>
     </div>
 
@@ -77,7 +77,10 @@ export default{
     components:{},
     data(){
         return{
-            selectedProduct = {},
+            selectedProduct : {
+                name : '발렌타인',
+                price : 5000,
+            },
             orderQuantity : 0,
         };
     },
