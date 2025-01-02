@@ -1,0 +1,59 @@
+
+*기본작동
+gitbash에서 git브런치 옮기기
+=> git checkout (브런치 이름)
+=> 개인브런치 : git checkout feature/nulee 
+=> 메인브런치 : git checkout main
+
+레퍼지토리 이름 확인 
+=> git remote -v
+
+
+*깃헙에서 다운로드 
+
+
+
+*깃헙에 업로드
+내 브런치로 push
+=> git push (레퍼지토리 이름) (내 브런치 이름)
+=> git push origin feature/nulee
+
+*내 브랜치를 서브 브랜치에 머지 요청 ( 풀 리퀘스트) .
+
+
+
+
+1. Git 브랜치 이동
+=> git checkout (브런치 이름)
+=> 개인 브런치 : git checkout feature/nulee
+=> 메인 브랜치 : git checkout main
+
+2. 레퍼지토리 이름 확인
+현재 연결된 원격 저장소의 이름을 확인 (default는 origin)
+=> git remote -v 
+
+3. GitHub에서 다운로드 (clone)
+GitHub에서 프로젝트를 다운로드하려면, 
+해당 프로젝트의 URL을 사용하여 로컬 컴퓨터에 복제(clone)할 수 있습니다.
+=>git clone https://github.com/username/repository.git
+
+4. GitHub에 업로드 (Push하기)
+내 브랜치에서 작업을 마친 후 변경 사항을 원격 저장소(GitHub)에 업로드
+
+내 브랜치로 push하기:
+bash
+코드 복사
+git push origin feature/nulee
+여기서 origin은 원격 저장소의 이름이고, feature/nulee는 내 브랜치의 이름입니다.
+5. 브랜치를 서브 브랜치에 머지 요청 (풀 리퀘스트)
+내 브랜치에서 작업을 완료하고, 이를 메인 브랜치나 다른 브랜치에 반영하려면 풀 리퀘스트(pull request)를 생성해야 합니다.
+
+풀 리퀘스트(PR) 생성하기: GitHub 웹사이트에서 내 브랜치(feature/nulee)와 머지할 대상 브랜치(예: main)를 선택하고, 풀 리퀘스트를 생성합니다.
+GitHub 웹사이트에서 프로젝트 페이지로 이동
+Pull requests 탭 클릭
+New pull request 클릭
+base 브랜치를 main, compare 브랜치를 feature/nulee로 설정
+Create pull request 버튼 클릭 후, 필요한 설명을 추가하고 요청을 생성합니다.
+풀 리퀘스트를 생성하면 다른 팀원들이 코드 리뷰를 하고, 문제 없으면 머지가 이루어집니다.
+
+이 흐름은 Git을 사용한 기본적인 협업 과정입니다. 브랜치를 사용해 독립적으로 작업한 후, 완료된 작업을 메인 브랜치에 합치는 방식입니다. 이를 통해 충돌을 최소화하고, 각자의 작업을 효율적으로 관리할 수 있습니다.
