@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1df07b53-262a-417a-b277-465c78e5e94b" name="변경" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2sVdVuOEYy1JAf3HtiTgoV6O3fp" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "C:/Users/project/KDT/JAVA/java-basic/src/Main.java",
+    "애플리케이션.Array02.executor": "Run",
+    "애플리케이션.Array05.executor": "Run",
+    "애플리케이션.ArrayAverage.executor": "Run",
+    "애플리케이션.ArrayMax.executor": "Run",
+    "애플리케이션.ArrayMultiD.executor": "Run",
+    "애플리케이션.Casting01.executor": "Run",
+    "애플리케이션.Casting02.executor": "Run",
+    "애플리케이션.Casting3.executor": "Run",
+    "애플리케이션.Casting4.executor": "Run",
+    "애플리케이션.ChangeData.executor": "Run",
+    "애플리케이션.ChangeMethod2.executor": "Run",
+    "애플리케이션.Class02.executor": "Run",
+    "애플리케이션.Compare1.executor": "Run",
+    "애플리케이션.EnhancedFor01.executor": "Run",
+    "애플리케이션.HelloJava2.executor": "Run",
+    "애플리케이션.Hellojava.executor": "Run",
+    "애플리케이션.If1.executor": "Run",
+    "애플리케이션.LoopExample.executor": "Run",
+    "애플리케이션.Main.executor": "Run",
+    "애플리케이션.Method01.executor": "Run",
+    "애플리케이션.Method02.executor": "Run",
+    "애플리케이션.Method03.executor": "Run",
+    "애플리케이션.Method04.executor": "Run",
+    "애플리케이션.Method3.executor": "Run",
+    "애플리케이션.MovieArray.executor": "Run",
+    "애플리케이션.MovieMain.executor": "Run",
+    "애플리케이션.MusicStart.executor": "Run",
+    "애플리케이션.Nested1.executor": "Run",
+    "애플리케이션.Null.executor": "Run",
+    "애플리케이션.Null3.executor": "Run",
+    "애플리케이션.Oop01.executor": "Run",
+    "애플리케이션.OperationEx1.executor": "Run",
+    "애플리케이션.OperationEx2.executor": "Run",
+    "애플리케이션.OperationEx3.executor": "Run",
+    "애플리케이션.Operator1.executor": "Run",
+    "애플리케이션.Operator2.executor": "Run",
+    "애플리케이션.OperatorAdd1.executor": "Run",
+    "애플리케이션.OperatorAdd2.executor": "Run",
+    "애플리케이션.Opp02.executor": "Run",
+    "애플리케이션.Scanner1.executor": "Run",
+    "애플리케이션.Scanner2.executor": "Run",
+    "애플리케이션.Scanner3.executor": "Run",
+    "애플리케이션.Scanner4.executor": "Run",
+    "애플리케이션.ScannerWhile01.executor": "Run",
+    "애플리케이션.Score.executor": "Run",
+    "애플리케이션.ScoreIf.executor": "Run",
+    "애플리케이션.Test02.executor": "Run",
+    "애플리케이션.Test03.executor": "Run",
+    "애플리케이션.Test06.executor": "Run",
+    "애플리케이션.Test06_2.executor": "Run",
+    "애플리케이션.Test09.executor": "Run",
+    "애플리케이션.Var1.executor": "Run",
+    "애플리케이션.Var2.executor": "Run",
+    "애플리케이션.Var3.executor": "Run",
+    "애플리케이션.Var4.executor": "Run",
+    "애플리케이션.Var5.executor": "Run",
+    "애플리케이션.Var6.executor": "Run",
+    "애플리케이션.Var7.executor": "Run",
+    "애플리케이션.Var8.executor": "Run",
+    "애플리케이션.VarEx1Question.executor": "Run",
+    "애플리케이션.VarEx2Question.executor": "Run",
+    "애플리케이션.VarEx3.executor": "Run",
+    "애플리케이션.While01.executor": "Run",
+    "애플리케이션.While02.executor": "Run",
+    "애플리케이션.break01.executor": "Run",
+    "애플리케이션.break2.executor": "Run",
+    "애플리케이션.breakContinue.executor": "Run",
+    "애플리케이션.countinue.executor": "Run",
+    "애플리케이션.doWhile.executor": "Run",
+    "애플리케이션.elseif.executor": "Run",
+    "애플리케이션.exchange.executor": "Run",
+    "애플리케이션.for01.executor": "Run",
+    "애플리케이션.for2.executor": "Run",
+    "애플리케이션.grade.executor": "Run",
+    "애플리케이션.gradeNewSwitch.executor": "Run",
+    "애플리케이션.if2.executor": "Run",
+    "애플리케이션.if3.executor": "Run",
+    "애플리케이션.largerNum.executor": "Run",
+    "애플리케이션.largerNum2.executor": "Run",
+    "애플리케이션.movie.executor": "Run",
+    "애플리케이션.ternaryOperator.executor": "Run",
+    "애플리케이션.ternaryOperator2.executor": "Run",
+    "애플리케이션.test.executor": "Run",
+    "애플리케이션.test1.executor": "Run",
+    "애플리케이션.test10.executor": "Run",
+    "애플리케이션.test2.executor": "Run",
+    "애플리케이션.test3.executor": "Run",
+    "애플리케이션.test4.executor": "Run",
+    "애플리케이션.test5.executor": "Run",
+    "애플리케이션.test6.executor": "Run",
+    "애플리케이션.test7.executor": "Run",
+    "애플리케이션.test8.executor": "Run",
+    "애플리케이션.test9.executor": "Run",
+    "애플리케이션.transe.executor": "Run"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="class01" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="class01" />
+      <recent name="Ex" />
+    </key>
+  </component>
+  <component name="RunManager" selected="애플리케이션.Opp02">
+    <configuration name="ChangeData" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="class01.ChangeData" />
+      <module name="java-basic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="class01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChangeMethod2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="class01.ChangeMethod2" />
+      <module name="java-basic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="class01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MusicStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="class01.Oop.MusicStart" />
+      <module name="java-basic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="class01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Oop01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="class01.Oop.Oop01" />
+      <module name="java-basic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="class01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Opp02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="class01.Oop.Opp02" />
+      <module name="java-basic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="class01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="애플리케이션.Opp02" />
+        <item itemvalue="애플리케이션.Oop01" />
+        <item itemvalue="애플리케이션.ChangeMethod2" />
+        <item itemvalue="애플리케이션.ChangeData" />
+        <item itemvalue="애플리케이션.MusicStart" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="1df07b53-262a-417a-b277-465c78e5e94b" name="변경" comment="" />
+      <created>1738544703958</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738544703958</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>2</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/operator/Operator2.java</url>
+          <line>2</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/scope/Scope1.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
