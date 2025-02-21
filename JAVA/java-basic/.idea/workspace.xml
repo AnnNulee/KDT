@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1df07b53-262a-417a-b277-465c78e5e94b" name="변경" comment="" />
+    <list default="true" id="1df07b53-262a-417a-b277-465c78e5e94b" name="변경" comment="변경">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,8 +38,14 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/project/KDT/JAVA/java-basic",
     "onboarding.tips.debug.path": "C:/Users/project/KDT/JAVA/java-basic/src/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pathVariables",
     "애플리케이션.Array02.executor": "Run",
     "애플리케이션.Array05.executor": "Run",
     "애플리케이션.ArrayAverage.executor": "Run",
@@ -143,7 +151,7 @@
       <recent name="Ex" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.Opp02">
+  <component name="RunManager" selected="Application.ChangeData">
     <configuration name="ChangeData" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="class01.ChangeData" />
       <module name="java-basic" />
@@ -197,8 +205,9 @@
       </method>
     </configuration>
     <configuration name="Opp02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="BUNDLED" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="class01.Oop.Opp02" />
-      <module name="java-basic" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="class01.*" />
@@ -209,15 +218,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="애플리케이션.Opp02" />
-        <item itemvalue="애플리케이션.Oop01" />
-        <item itemvalue="애플리케이션.ChangeMethod2" />
-        <item itemvalue="애플리케이션.ChangeData" />
-        <item itemvalue="애플리케이션.MusicStart" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

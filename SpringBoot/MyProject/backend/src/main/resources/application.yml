@@ -1,0 +1,21 @@
+spring:
+  # 스프링 내부에 적용해야하는건 반드시 spring 내부 탭에 넣어줘야한다.!
+  datasource:
+    url: "jdbc:mysql://localhost:3306/kidTalk"
+    username: "root"
+    password: "1234"
+    driver-class-name : com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      generate-ddl: true # ddl: data define language.
+      ddl-auto: update  # 테이블을 어떻게 처리할지 결정. 아무런 조치도 취하지 않을때 none. 테이블과 엔터티 둘다 신뢰할 수 없음ㅋㅋㅋ
+      #none : java엔터티와 실제 DB와 달라도 뭘 안해줌. 다르면 그냥 에러난다.
+      #update : jpa엔터티를 기준으로 우선한다.
+    properties:
+      hibernate:
+        show_sql: true  # 쿼리가수행될때 SQL도 같이 보여줌
+        format_sql: true  # SQL을 보기 좋게 포메팅
+        dialect: org.hibernate.dialect.MySQL8Dialect  # 여러 데이터베이스에 맞게설정
+
+
+

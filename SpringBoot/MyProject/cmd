@@ -1,0 +1,39 @@
+C:\Users\project\KDT\SpringBoot>cd MyProject
+
+C:\Users\project\KDT\SpringBoot\MyProject>npm create vite@latest frontend --template vue
+    // frontend : 폴더명. VITE는 VUE CLI 보다 빠름. 차이는 거의없다.
+
+√ Select a framework: » Vue
+√ Select a variant: » JavaScript
+
+C:\Users\project\KDT\SpringBoot\MyProject>cd frontend
+
+C:\Users\project\KDT\SpringBoot\MyProject\frontend>npm install axios
+
+C:\Users\project\KDT\SpringBoot\MyProject\frontend>npm run build
+
+    // Vite를 사용할 때는 빌드를 반드시 해야한다.
+    // Vite 를 사용한 개발 중에는 파일을 빠르게 불러와서 작업할 수 있다.
+    // 실제로 웹사이트를 공개하기 전에는 최적화와 묶음 작업을 통해 '빌드'를 해야 한다.
+    // 빌드 과정을 거치면 웹사이트가 더 빠르게 로드되도록 하고, 더 많은 브라우저에서 문제없이 작동한다.
+    // 빌드하고 나면 frontend/dist 폴더가 만들어진다.
+    // 빌드한걸 백앤드에 넣어서 거기서 실행하기 위해서는,
+
+C:\Users\project\KDT\SpringBoot\MyProject\frontend>cd ..
+
+C:\Users\project\KDT\SpringBoot\MyProject>xcopy /E /I /Y frontend\dist\* backend\src\main\resources\static\
+
+    // 내부에 있는 모든것을 backend/ ~ /static/ 폴더에 복사한다.
+    // 물론 이전에 한것처럼 프론트는 프론트에서 열고 요청 주고받아도 됨.
+
+C:\Users\project\KDT\SpringBoot\MyProject>cd frontend
+
+C:\Users\project\KDT\SpringBoot\MyProject\frontend>npm run dev
+
+    // 이렇게 프론트 서버 연다.
+    // 근데 명령어가 여기선 npm run serve 아니고 dev임. vue cli 가 아니라 vite라서?
+
+
+   // 여기까지 해서 프론트 서버 열고, backend 실행시키면, 데이터베이스 오류 난다.
+   // MySQL Driver (MySQL 데이터베이스와의 연결을 위한 JDBC 드라이버 연동 필요)
+   // back/src/main/resources/application.properties 에서 드라이버 연동 정보 설정해준다.(url, username, password, driver-class-name)
