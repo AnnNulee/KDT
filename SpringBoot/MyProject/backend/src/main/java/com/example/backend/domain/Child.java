@@ -30,6 +30,9 @@ public class Child {
 
 
     // Child - Personality (N:M)
+
+    //counselorList 속성은 실제로 데이터베이스에 생성되는 속성은 아님.
+    // professionalArea와 Counselor 간의 다대다(N: M) 관계를 나타내기 위해 사용되는 연관 관계를 나타내는 필드.
     @ManyToMany
     @JoinTable(
             name = "child_personality",

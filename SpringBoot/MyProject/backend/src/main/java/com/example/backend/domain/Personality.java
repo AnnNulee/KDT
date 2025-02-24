@@ -16,11 +16,13 @@ public class Personality {
     private String personalityName;
 
 
+
     //관계설정
     //child - personality (n:n)
     @ManyToMany(mappedBy = "personalityList")
     private List<Child> childList = new ArrayList<>();
 
+    //관계설정
 
     public void addChild(Child child){
         this.childList.add(child);
@@ -49,6 +51,7 @@ public class Personality {
     public void setPersonalityName(String personalityName) {
         this.personalityName = personalityName;
     }
+
 
 
 }
