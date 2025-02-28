@@ -1,0 +1,5 @@
+npm init
+
+npm install express express-session cookie-parser dotenv nodemon morgan nunjucks
+
+npm install ws

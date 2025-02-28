@@ -1,0 +1,28 @@
+{
+  "name": "websockatchat",
+  "version": "0.0.1",
+  "description": "웹 소켓",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "author": "root",
+  "license": "ISC",
+  "dependencies": {
+    "chat": "file:",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "gif-chat": "file:",
+    "morgan": "^1.10.0",
+    "nunjucks": "^3.2.4",
+    "ws": "^8.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "keywords": [
+    "root"
+  ]
+}
