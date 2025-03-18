@@ -1,0 +1,43 @@
+from dotenv import load_dotenv
+import os
+
+# .env 파일 로드
+load_dotenv()
+
+api_key = os.getenv("OPENAI_API_KEY")
+
+
+##1. text 파일 불러오기
+from langchain.document_loaders import TextLoader
+from langchain.vectorstores import Chroma
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.text_splitter import CharacterTextSplitter
+
+
+loader = TextLoader("2025년02월12일 회의록.txt", encoding="utf8")
+documents = loader.load() # 문서 로드
+print(documents)
+
+## 토크나이징
+text_splitter = CharacterTextSplitter(
+    separator='\n',
+    chunk_size = 100,
+    chunk_overlap = 20
+)
+
+split_document = text_splitter.split_documents(documents)
+
+
+## 벡터 저장소 생성 text데이터 추가
+vectorstore = Chroma.from_documents(split_document, 
+                                    embedding=OpenAIEmbeddings())
+
+
+## 검색 기능 추가
+retriever = vectorstore.as_retriever(search_kwargs={
+    "k": 1}
+)
+
+query = "회의시간은 몇시지?"
+result = retriever.invoke(query)
+print(result)

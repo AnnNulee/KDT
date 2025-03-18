@@ -1,0 +1,8 @@
+
+
+> pip install langchain langchain-openai openai chromadb python-dotenv
+
+chromadb : 벡터DB
+
+
+pip install -U langchain-community
